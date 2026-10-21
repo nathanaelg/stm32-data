@@ -687,6 +687,7 @@ const PERIMAP: &[(&str, (&str, &str, &str))] = &[
     (r".*:HPDMA\d?:.*", ("gpdma", "v1", "GPDMA")), // TODO it has a few more bits like DWX
     (r".*:LPDMA\d?:.*", ("lpdma", "v1", "LPDMA")),
     (r".*:BDMA\d?:.*", ("bdma", "v1", "DMA")),
+    (".*:DMA2D:DMA2D:STM32H5_v1_0", ("dma2d", "v3", "DMA2D")),
     ("STM32H7.*:DMA2D:DMA2D:dma2d1_v1_0", ("dma2d", "v2", "DMA2D")),
     ("STM32U5.*:DMA2D:DMA2D:dma2d1_v1_0", ("dma2d", "v2", "DMA2D")),
     (".*:DMA2D:dma2d1_v1_0", ("dma2d", "v1", "DMA2D")),
@@ -761,6 +762,7 @@ const PERIMAP: &[(&str, (&str, &str, &str))] = &[
         "STM32L5.*:OCTOSPI[12]:OCTOSPI:octospi_v1_0L5.*",
         ("octospi", "v2", "OCTOSPI"),
     ),
+    (".*:OCTOSPI[12]:OCTOSPI:octospi_v6_2", ("octospi", "v3", "OCTOSPI")),
     (
         "STM32H5.*:OCTOSPI[12]:OCTOSPI:octospi1_v5_1.*",
         ("octospi", "v2", "OCTOSPI"),
@@ -879,6 +881,7 @@ const PERIMAP: &[(&str, (&str, &str, &str))] = &[
     // N6 XSPI support
     (".*:XSPI[123]:XSPI:xspi_v2_1.*", ("xspi", "v1", "XSPI")),
     (".*:XSPIM:XSPIM:xspi_v2_1.*", ("xspim", "v1", "XSPIM")),
+    ("STM32H5[EF].*:PLAY1:PLAY:v1_0.*", ("play", "v1", "PLAY")),
     // H7RS XSPI support
     (".*:XSPI[12]:XSPI:xspi_v2_1H7RS*", ("xspi", "v1", "XSPI")),
     (".*:XSPIM:XSPIM:xspi_v2_1H7RS*", ("xspim", "v1", "XSPIM")),

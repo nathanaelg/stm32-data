@@ -186,14 +186,14 @@ block/DMA2D:
     access: Read
     fieldset: LBCAR
   - name: FGCLUT
-    description: DMA2D foreground CLUT0.
+    description: DMA2D foreground CLUT.
     array:
       len: 256
       stride: 4
     byte_offset: 1024
     fieldset: FGCLUT
   - name: BGCLUT
-    description: DMA2D background CLUT0.
+    description: DMA2D background CLUT.
     array:
       len: 256
       stride: 4
@@ -211,7 +211,7 @@ fieldset/AMTCR:
     bit_offset: 8
     bit_size: 8
 fieldset/BGCLUT:
-  description: DMA2D background CLUT0.
+  description: DMA2D background CLUT.
   fields:
   - name: BLUE
     description: Blue.
@@ -401,7 +401,7 @@ fieldset/CR:
     bit_offset: 16
     bit_size: 3
 fieldset/FGCLUT:
-  description: DMA2D foreground CLUT0.
+  description: DMA2D foreground CLUT.
   fields:
   - name: BLUE
     description: Blue.

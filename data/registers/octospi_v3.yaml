@@ -183,10 +183,6 @@ fieldset/CCR:
     description: DQS enable. This bit enables the data strobe management.
     bit_offset: 29
     bit_size: 1
-  - name: SIOO
-    description: Send instruction only once mode. This bit has no effect when IMODE = 00 (see ).
-    bit_offset: 31
-    bit_size: 1
 fieldset/CR:
   description: control register
   fields:
@@ -210,11 +206,6 @@ fieldset/CR:
     description: Dual-memory configuration. This bit activates the dual-memory configuration, where two external devices are used simultaneously to double the throughput and the capacity
     bit_offset: 6
     bit_size: 1
-  - name: FSEL
-    description: Flash select. This bit selects the Flash memory to be addressed in Single-, Dual-, Quad-SPI mode in single-memory configuration (when DMM = 0). This bit is ignored when DMM = 1 or when Octal-SPI mode is selected.
-    bit_offset: 7
-    bit_size: 1
-    enum: FlashSelect
   - name: FTHRES
     description: 'FIFO threshold level. This field defines, in Indirect mode, the threshold number of bytes in the FIFO that causes the FIFO threshold flag FTF in SR, to be set. ... Note: If DMAEN = 1, the DMA controller for the corresponding channel must be disabled before changing the FTHRES[4:0] value.'
     bit_offset: 8
@@ -249,11 +240,24 @@ fieldset/CR:
     bit_offset: 23
     bit_size: 1
     enum: MatchMode
+  - name: CSSEL
+    description: Chip-select selection.
+    bit_offset: 24
+    bit_size: 1
+  - name: NOPREF
+    description: No prefetch data.
+    bit_offset: 25
+    bit_size: 1
   - name: FMODE
     description: Functional mode. This field defines the OCTOSPI functional mode of operation. If DMAEN = 1 already, then the DMA controller for the corresponding channel must be disabled before changing the FMODE[1:0] value. If FMODE[1:0] and FTHRES[4:0] are wrongly updated while DMAEN = 1, the DMA request signal automatically goes to inactive state.
     bit_offset: 28
     bit_size: 2
     enum: FunctionalMode
+  - name: MSEL
+    description: External memory select.
+    bit_offset: 30
+    bit_size: 1
+    enum: FlashSelect
 fieldset/DCR1:
   description: device configuration register 1
   fields:
@@ -277,6 +281,10 @@ fieldset/DCR1:
     description: 'Device size. This field defines the size of the external device using the following formula: Number of bytes in device = 2[DEVSIZE+1]. DEVSIZE+1 is effectively the number of address bits required to address the external device. The device capacity can be up to 4 Gbytes (addressed using 32-bits) in Indirect mode, but the addressable space in Memory-mapped mode is limited to 256 Mbytes. In Regular-command protocol, if DMM = 1, DEVSIZE[4:0] indicates the total capacity of the two devices together.'
     bit_offset: 16
     bit_size: 5
+  - name: EXTENDMEM
+    description: Extended memory support.
+    bit_offset: 21
+    bit_size: 1
   - name: MTYP
     description: 'Memory type. This bit indicates the type of memory to be supported. Note: In. this mode, DQS signal polarity is inverted with respect to the memory clock signal. This is the default value and care must be taken to change MTYP[2:0] for memories different from Micron. Others: Reserved'
     bit_offset: 24
@@ -296,6 +304,10 @@ fieldset/DCR2:
 fieldset/DCR3:
   description: device configuration register 3
   fields:
+  - name: MAXTRAN
+    description: Maximum transfer
+    bit_offset: 0
+    bit_size: 8
   - name: CSBOUND
     description: 'NCS boundary. This field enables the transaction boundary feature. When active, a minimum value of 3 is recommended. The NCS is released on each boundary of 2CSBOUND bytes. others: NCS boundary set to 2CSBOUND bytes'
     bit_offset: 16

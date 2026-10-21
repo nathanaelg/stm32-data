@@ -14,28 +14,28 @@ block/PLAY:
     byte_offset: 8
     fieldset: PRIVCFGR
   - name: FILTCFG
-    description: PLAY filter 0 configuration register.
+    description: PLAY filter configuration register.
     array:
       len: 16
       stride: 4
     byte_offset: 32
     fieldset: FILTCFG
   - name: LECFG1
-    description: PLAY logic element 0 configuration register 1.
+    description: PLAY logic element configuration register 1.
     array:
       len: 16
       stride: 4
     byte_offset: 96
     fieldset: LECFG1
   - name: LECFG2
-    description: PLAY logic element 0 configuration register 2.
+    description: PLAY logic element configuration register 2.
     array:
       len: 16
       stride: 4
     byte_offset: 160
     fieldset: LECFG2
   - name: OUTCFG
-    description: PLAY output 0 configuration register.
+    description: PLAY output configuration register.
     array:
       len: 16
       stride: 4
@@ -110,7 +110,7 @@ fieldset/CFGCR:
     bit_offset: 0
     bit_size: 1
 fieldset/FILTCFG:
-  description: PLAY filter 0 configuration register.
+  description: PLAY filter configuration register.
   fields:
   - name: WIDTH
     description: Minimum pulse width.
@@ -817,14 +817,14 @@ fieldset/ISR:
     bit_offset: 2
     bit_size: 1
 fieldset/LECFG1:
-  description: PLAY logic element 0 configuration register 1.
+  description: PLAY logic element configuration register 1.
   fields:
   - name: LUT
     description: Look-up table contents.
     bit_offset: 0
     bit_size: 16
 fieldset/LECFG2:
-  description: PLAY logic element 0 configuration register 2.
+  description: PLAY logic element configuration register 2.
   fields:
   - name: IN0_SEL
     description: Logic element input 0 selection.
@@ -989,7 +989,7 @@ fieldset/OSR:
     bit_offset: 31
     bit_size: 1
 fieldset/OUTCFG:
-  description: PLAY output 0 configuration register.
+  description: PLAY output configuration register.
   fields:
   - name: SEL
     description: Output source selection.
