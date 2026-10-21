@@ -392,9 +392,15 @@ impl ChipInterrupts {
 
                 trace!("    {thread_id:?} peri_names: {peri_names:?}");
 
+                let is_h5ef = chip_name.starts_with("STM32H5E") || chip_name.starts_with("STM32H5F");
                 let name2 = {
                     if name == "USBWakeUp" || name == "USBWakeUp_RMP" {
                         "USB_WKUP"
+                    } else if name == "LCD" && is_h5ef {
+                        // STM32H5E/F name the LTDC IRQs LCD and LCD_GBL_ERROR
+                        "LTDC_LO"
+                    } else if name == "LCD_GBL_ERROR" && is_h5ef {
+                        "LTDC_ER"
                     } else {
                         name.strip_suffix("_S").unwrap_or(&name)
                     }
@@ -860,7 +866,7 @@ fn pick_nvic(chip_name: &str, core_name: &str) -> String {
             ("STM32WL5.*:cm4", "NVIC1"),
             ("STM32WL5.*:cm0p", "NVIC2"),
             // Exception 2: TrustZone: NVIC1 is Secure mode, NVIC2 is NonSecure mode. For now, we pick the NonSecure one.
-            ("STM32(L5|U3|U5|H5[2367]|WBA5[245]|WBA6[2345]).*", "NVIC2"),
+            ("STM32(L5|U3|U5|H5[2-7EF]|WBA5[245]|WBA6[2345]).*", "NVIC2"),
             // Exception 3: NVICs are split for "bootloader" and "application", not sure what that means?
             ("STM32H7[RS].*", "NVIC2"),
             // Exception 4: NVICS are split for bootloader NVIC, secure NVIC1 and non-secure NVIC2.

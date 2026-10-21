@@ -25,7 +25,8 @@ pub mod xml {
         pub cores: Vec<String>,
         #[serde(rename = "Ram")]
         pub rams: Vec<u32>,
-        #[serde(rename = "Flash")]
+        // Absent in some CubeMX XMLs (e.g. STM32H5E/F 3 MB parts); flash layout comes from memory.rs.
+        #[serde(rename = "Flash", default)]
         pub flashs: Vec<u32>,
         #[serde(rename = "IP")]
         pub ips: Vec<Ip>,

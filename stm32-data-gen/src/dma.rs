@@ -330,9 +330,14 @@ impl DmaChannels {
                 let parsed: xml::Ip =
                     quick_xml::de::from_str(&std::fs::read_to_string(&f)?).context(format!("{:?}", f))?;
 
+                // DMA2D is the Chrom-ART blitter, not a DMA controller with channels/requests.
+                if parsed.name == "DMA2D" {
+                    return Ok(None);
+                }
+
                 let ff = parsed.version.clone();
                 let is_explicitly_bdma = match parsed.name.as_str() {
-                    "DMA" | "DMA2D" => false,
+                    "DMA" => false,
                     "BDMA" | "BDMA1" | "BDMA2" => true,
                     name => panic!("Unrecognized DMA name: {name}"),
                 };
@@ -474,11 +479,14 @@ impl DmaChannels {
 
                         for channel in channels {
                             let channel_name = channel.name;
-                            let (_, channel_name) = channel_name.split_once('_').unwrap();
                             let channel_name = channel_name
-                                .strip_prefix("Channel")
-                                .or_else(|| channel_name.strip_prefix("Stream"))
-                                .unwrap();
+                                .split_once('_')
+                                .and_then(|(_, suffix)| {
+                                    suffix.strip_prefix("Channel").or_else(|| suffix.strip_prefix("Stream"))
+                                })
+                                .with_context(|| {
+                                    format!("Unexpected DMA channel {channel_name:?} in {}", f.display())
+                                })?;
 
                             channel_names.push(channel_name.parse().unwrap());
                             chip_dma.channels.push(stm32_data_serde::chip::core::DmaChannels {
