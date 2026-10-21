@@ -38,6 +38,10 @@ fieldset/CLRFR:
     description: Clear operation error flag.
     bit_offset: 21
     bit_size: 1
+  - name: CMFC
+    description: Clear chaining mode flag.
+    bit_offset: 22
+    bit_size: 1
 fieldset/CR:
   description: PKA control register.
   fields:
@@ -69,6 +73,10 @@ fieldset/CR:
     description: Operation error interrupt enable.
     bit_offset: 21
     bit_size: 1
+  - name: CMFIE
+    description: Chaining mode flags interrupt enable.
+    bit_offset: 22
+    bit_size: 1
 fieldset/SR:
   description: PKA status register.
   fields:
@@ -81,6 +89,38 @@ fieldset/SR:
     bit_offset: 1
     bit_size: 1
     enum: LMF
+  - name: CCEN
+    description: Coupling and chaining mode enable.
+    bit_offset: 2
+    bit_size: 1
+  - name: RNGOKF
+    description: RNG OK flag.
+    bit_offset: 8
+    bit_size: 1
+  - name: DATAOKF
+    description: Data OK flag.
+    bit_offset: 9
+    bit_size: 1
+  - name: INCRERRF
+    description: Increment error flag.
+    bit_offset: 10
+    bit_size: 1
+  - name: DATAZF
+    description: Data 0-ed error flag.
+    bit_offset: 11
+    bit_size: 1
+  - name: TRZERRF
+    description: Trailing 0s error flag.
+    bit_offset: 12
+    bit_size: 1
+  - name: MDERRF
+    description: Mode error flag.
+    bit_offset: 13
+    bit_size: 1
+  - name: RNGERRF
+    description: RNG error flag.
+    bit_offset: 14
+    bit_size: 1
   - name: BUSY
     description: PKA operation is in progress This bit is set to 1 whenever START bit in the PKA_CR is set. It is automatically cleared when the computation is complete, meaning that PKA RAM can be safely accessed and a new operation can be started. If PKA is started with a wrong opcode, it is busy for a couple of cycles, then it aborts automatically the operation and go back to ready (BUSY bit is set to 0).
     bit_offset: 16
@@ -100,6 +140,10 @@ fieldset/SR:
   - name: OPERRF
     description: Operation error flag This bit is cleared using OPERRFC bit in PKA_CLRFR.
     bit_offset: 21
+    bit_size: 1
+  - name: CMF
+    description: Chaining mode flags.
+    bit_offset: 22
     bit_size: 1
 enum/LMF:
   bit_size: 1

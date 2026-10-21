@@ -82,6 +82,10 @@ fieldset/SR:
     description: Watchdog interrupt comparator value update This bit is set by hardware to indicate that an update of the interrupt comparator value (EWIT[11:0]) or an update of the EWIE is ongoing. It is reset by hardware when the update operation is completed in the VDD voltage domain (takes up to three periods of the IWDG kernel clock iwdg_ker_ck). The EWIT[11:0] and EWIE fields can be updated only when EWU bit is reset.
     bit_offset: 3
     bit_size: 1
+  - name: ONF
+    description: Watchdog enable status bit.
+    bit_offset: 8
+    bit_size: 1
   - name: EWIF
     description: Watchdog early interrupt flag This bit is set to ‘1’ by hardware in order to indicate that an early interrupt is pending. This bit must be cleared by the software by writing the bit EWIC of IWDG_EWCR register to ‘1’.
     bit_offset: 14

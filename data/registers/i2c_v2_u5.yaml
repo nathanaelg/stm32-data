@@ -129,6 +129,18 @@ fieldset/CR1:
     description: PEC enable
     bit_offset: 23
     bit_size: 1
+  - name: FMP
+    description: Fast-mode Plus 20 mA drive enable.
+    bit_offset: 24
+    bit_size: 1
+  - name: ADDRACLR
+    description: Address match flag (ADDR) automatic clear.
+    bit_offset: 30
+    bit_size: 1
+  - name: STOPFACLR
+    description: STOP detection flag (STOPF) automatic clear.
+    bit_offset: 31
+    bit_size: 1
 fieldset/CR2:
   description: Control register 2
   fields:

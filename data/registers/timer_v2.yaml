@@ -207,17 +207,17 @@ block/TIM_2CH_CMP:
   - name: CCMR_Input
     description: capture/compare mode register 1 (input mode)
     array:
-      len: 2
+      len: 1
       stride: 4
     byte_offset: 24
-    fieldset: CCMR_Input_1CH
+    fieldset: CCMR_Input_2CH
   - name: CCMR_Output
     description: capture/compare mode register 1 (output mode)
     array:
-      len: 2
+      len: 1
       stride: 4
     byte_offset: 24
-    fieldset: CCMR_Output_1CH
+    fieldset: CCMR_Output_2CH
   - name: CCER
     description: capture/compare enable register
     byte_offset: 32
@@ -1361,10 +1361,24 @@ fieldset/DIER_2CH_CMP:
   extends: DIER_1CH_CMP
   description: DMA/Interrupt enable register
   fields:
+  - name: CCIE
+    description: Capture/Compare x interrupt enable
+    bit_offset: 1
+    bit_size: 1
+    array:
+      len: 2
+      stride: 1
   - name: TIE
     description: Trigger interrupt enable
     bit_offset: 6
     bit_size: 1
+  - name: CCDE
+    description: Capture/Compare x DMA request enable
+    bit_offset: 9
+    bit_size: 1
+    array:
+      len: 2
+      stride: 1
   - name: COMDE
     description: COM DMA request enable
     bit_offset: 13
@@ -1517,7 +1531,7 @@ fieldset/ECR_GP16:
   - name: PWPRSC
     description: Pulse width prescaler
     bit_offset: 24
-    bit_size: 2
+    bit_size: 3
 fieldset/EGR_1CH:
   extends: EGR_CORE
   description: event generation register

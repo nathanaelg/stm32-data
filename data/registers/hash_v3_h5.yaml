@@ -37,7 +37,7 @@ block/HASH:
   - name: HR
     description: HASH digest register.
     array:
-      len: 16
+      len: 42
       stride: 4
     byte_offset: 784
     access: Read
@@ -113,7 +113,7 @@ fieldset/SR:
   - name: NBWP
     description: Number of words already pushed.
     bit_offset: 9
-    bit_size: 5
+    bit_size: 6
   - name: DINNE
     description: DIN not empty.
     bit_offset: 15
@@ -121,7 +121,7 @@ fieldset/SR:
   - name: NBWE
     description: Number of words expected.
     bit_offset: 16
-    bit_size: 5
+    bit_size: 6
 fieldset/STR:
   description: start register.
   fields:

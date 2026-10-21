@@ -101,6 +101,10 @@ block/RTC:
     byte_offset: 92
     access: Write
     fieldset: SCR
+  - name: OR
+    description: Option register
+    byte_offset: 96
+    fieldset: OR
   - name: ALRBINR
     description: Alarm binary mode register
     array:
@@ -455,6 +459,13 @@ fieldset/MISR:
     bit_offset: 6
     bit_size: 1
     enum: SSRUMF
+fieldset/OR:
+  description: Option register
+  fields:
+  - name: OUT2_RMP
+    description: RTC_OUT2 mapping
+    bit_offset: 0
+    bit_size: 1
 fieldset/PRER:
   description: Prescaler register
   fields:

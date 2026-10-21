@@ -173,6 +173,11 @@ fieldset/DFLTCR:
     bit_offset: 4
     bit_size: 3
     enum: ACQMOD
+  - name: TRGSENS
+    description: Trigger sensitivity selection. This bit is set and cleared by software. It is used to select the trigger sensitivity of the trigger signals. This bit is not significant if the ACQMOD is not configured in synchronous mode.
+    bit_offset: 8
+    bit_size: 1
+    enum: TRGSENS
   - name: TRGSRC
     description: DFLT trigger signal selection.
     bit_offset: 12

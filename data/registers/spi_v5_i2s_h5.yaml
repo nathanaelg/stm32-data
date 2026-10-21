@@ -94,8 +94,7 @@ fieldset/CFG1:
   - name: UDRCFG
     description: Behavior of slave transmitter at underrun condition
     bit_offset: 9
-    bit_size: 2
-    enum: UDRCFG
+    bit_size: 1
   - name: RXDMAEN
     description: Rx DMA stream enable
     bit_offset: 14
@@ -111,6 +110,10 @@ fieldset/CFG1:
   - name: CRCEN
     description: Hardware CRC computation enable
     bit_offset: 22
+    bit_size: 1
+  - name: DRDS
+    description: data sampling delay on master input (MISO).
+    bit_offset: 24
     bit_size: 1
   - name: MBR
     description: Master baud rate
@@ -713,18 +716,6 @@ enum/TCRCINI:
   - name: AllOnes
     description: All ones TX CRC initialization pattern
     value: 1
-enum/UDRCFG:
-  bit_size: 2
-  variants:
-  - name: Constant
-    description: Slave sends a constant underrun pattern
-    value: 0
-  - name: RepeatReceived
-    description: Slave repeats last received data frame from master
-    value: 1
-  - name: RepeatTransmitted
-    description: Slave repeats last transmitted data frame
-    value: 2
 enum/ODD:
   bit_size: 1
   variants:

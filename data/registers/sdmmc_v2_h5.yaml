@@ -80,6 +80,14 @@ block/SDMMC:
     description: The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
     byte_offset: 92
     fieldset: IDMABASE1R
+  - name: IDMALAR
+    description: SDMMC IDMA linked list address register.
+    byte_offset: 100
+    fieldset: IDMALAR
+  - name: IDMABAR
+    description: SDMMC IDMA linked list memory base register.
+    byte_offset: 104
+    fieldset: IDMABAR
   - name: FIFOR
     description: The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     byte_offset: 128
@@ -351,6 +359,13 @@ fieldset/ID:
     description: SDMMC IP identification.
     bit_offset: 0
     bit_size: 32
+fieldset/IDMABAR:
+  description: SDMMC IDMA linked list memory base register.
+  fields:
+  - name: IDMABA
+    description: Word aligned Linked list memory base address.
+    bit_offset: 2
+    bit_size: 30
 fieldset/IDMABASE0R:
   description: The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
   fields:
@@ -371,7 +386,7 @@ fieldset/IDMABSIZER:
   - name: IDMABNDT
     description: 'Number of transfers per buffer. This 8-bit value shall be multiplied by 8 to get the size of the buffer in 32-bit words and by 32 to get the size of the buffer in bytes. Example: IDMABNDT = 0x01: buffer size = 8 words = 32 bytes. These bits can only be written by firmware when DPSM is inactive (DPSMACT = 0).'
     bit_offset: 5
-    bit_size: 8
+    bit_size: 12
 fieldset/IDMACTRLR:
   description: The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
   fields:
@@ -386,6 +401,25 @@ fieldset/IDMACTRLR:
   - name: IDMABACT
     description: Double buffer mode active buffer indication This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). When IDMA is enabled this bit is toggled by hardware.
     bit_offset: 2
+    bit_size: 1
+fieldset/IDMALAR:
+  description: SDMMC IDMA linked list address register.
+  fields:
+  - name: IDMALA
+    description: Word aligned linked list item address offset.
+    bit_offset: 2
+    bit_size: 14
+  - name: ABR
+    description: Acknowledge linked list buffer ready.
+    bit_offset: 29
+    bit_size: 1
+  - name: ULS
+    description: Update SDMMC_IDMABSIZE from the next linked list when in linked list mode (SDMMC_IDMACTRLR.
+    bit_offset: 30
+    bit_size: 1
+  - name: ULA
+    description: Update SDMMC_IDMALAR from linked list when in linked list mode (SDMMC_IDMACTRLR.
+    bit_offset: 31
     bit_size: 1
 fieldset/MASKR:
   description: The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
