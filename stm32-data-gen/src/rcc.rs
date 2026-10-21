@@ -186,7 +186,11 @@ impl ParsedRccs {
             regex!(r"^.+PERCKSELR/(.+)SEL$"),
             regex!(r"^CSR/(.+)SEL$"),
         ];
-        let mux_nopelist = &[regex!(r"^.+PERCKSELR/USBREFCKSEL$"), regex!(r"^.+/TIMICSEL$")];
+        let mux_nopelist = &[
+            regex!(r"^.+PERCKSELR/USBREFCKSEL$"),
+            regex!(r"^CCIPR\d*/OTGPHYREFCKSEL$"),
+            regex!(r"^.+/TIMICSEL$"),
+        ];
 
         let mut mux = HashMap::new();
         for (reg, body) in &ir.fieldsets {
@@ -340,7 +344,7 @@ impl ParsedRccs {
             ("I2C3", &["I2C1235"]),
             ("I2C5", &["I2C1235"]),
             ("USB", &["USB", "CLK48", "ICLK"]),
-            ("USB_OTG_FS", &["USB", "CLK48", "ICLK"]),
+            ("USB_OTG_FS", &["USB", "CLK48", "ICLK", "OTGFS"]),
             ("USB_OTG_HS", &["USB", "USBPHYC", "OTGHS", "CLK48", "ICLK"]),
             ("USB1_OTG_HS", &["OTG1", "OTGPHY1"]),
             ("USB2_OTG_HS", &["OTG2", "OTGPHY2"]),
