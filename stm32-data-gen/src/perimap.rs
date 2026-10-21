@@ -696,6 +696,7 @@ const PERIMAP: &[(&str, (&str, &str, &str))] = &[
     ("STM32WLE.*:HSEM:.*", ("hsem", "v4", "HSEM")),
     ("STM32WBA.*:HSEM:.*", ("hsem", "wba", "HSEM")),
     (".*:DMAMUX.*", ("dmamux", "v1", "DMAMUX")),
+    (r".*:GPDMA:(Instance2_)?STM32H5_v2_dma3", ("gpdma", "v1_h5_ef", "GPDMA")),
     (r".*:GPDMA\d?:.*", ("gpdma", "v1", "GPDMA")),
     (r".*:HPDMA\d?:.*", ("gpdma", "v1", "GPDMA")), // TODO it has a few more bits like DWX
     (r".*:LPDMA\d?:.*", ("lpdma", "v1", "LPDMA")),

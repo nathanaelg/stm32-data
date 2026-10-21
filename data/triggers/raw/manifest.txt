@@ -39,6 +39,7 @@
 0029a_u5_adc.yaml
 0031_h503_dac.yaml
 0032_h567_dac.yaml
+0032a_h5ef_dac.yaml
 0033_h5_dac.yaml
 0034_g0_dac.yaml
 0035_g0_adc.yaml
@@ -48,6 +49,7 @@
 0038a_f0_adc.yaml
 0039_u0_tim1.yaml
 0040_u0_dac.yaml
+0040a_h5ef_adc_1_2_3.yaml
 0041_h5_adc_1_2_3.yaml
 0042_g4_adc_1_2.yaml
 0043_g4_adc_3_4_5.yaml

@@ -576,6 +576,8 @@ impl DmaChannels {
         let files = [
             ("H5_GPDMA.yaml", "GPDMA1", "STM32H5_dma3_Cube", 8, 2),
             ("H5_GPDMA.yaml", "GPDMA2", "Instance2_STM32H5_dma3_Cube", 8, 2),
+            ("H5EF_GPDMA.yaml", "GPDMA1", "STM32H5_v2_dma3_Cube", 12, 2),
+            ("H5EF_GPDMA.yaml", "GPDMA2", "Instance2_STM32H5_v2_dma3_Cube", 12, 2),
             ("U3_GPDMA1.yaml", "GPDMA1", "STM32U3_dma3_Cube", 12, 0),
             ("U5_GPDMA1.yaml", "GPDMA1", "STM32U5_dma3_Cube", 16, 4),
             ("U5_LPDMA.yaml", "LPDMA1", "STM32U5_dma3_Cube", 4, 0),
