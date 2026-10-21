@@ -93,12 +93,91 @@ block/GTZC1_TZSC:
     description: GTZC1 TZSC memory 4 sub-region B watermark register.
     byte_offset: 124
     fieldset: MPCWM4BR
+block/MPCBB:
+  description: Block-based memory protection controller.
+  items:
+  - name: CR
+    description: MPCBB control register.
+    byte_offset: 0
+    fieldset: MPCBB_CR
+  - name: CFGLOCK
+    description: MPCBB configuration lock register.
+    byte_offset: 16
+    fieldset: CFGLOCK
+  - name: SECCFGR
+    description: MPCBB security configuration register.
+    array:
+      len: 32
+      stride: 4
+    byte_offset: 256
+    fieldset: SECCFGR
+  - name: PRIVCFGR
+    description: MPCBB privilege configuration register.
+    array:
+      len: 32
+      stride: 4
+    byte_offset: 512
+    fieldset: PRIVCFGR
+block/TZIC:
+  description: TrustZone interrupt controller.
+  items:
+  - name: IER
+    description: TZIC interrupt enable register.
+    array:
+      len: 4
+      stride: 4
+    byte_offset: 0
+    fieldset: IER
+  - name: SR
+    description: TZIC status register.
+    array:
+      len: 4
+      stride: 4
+    byte_offset: 16
+    fieldset: SR
+  - name: FCR
+    description: TZIC flag clear register.
+    array:
+      len: 4
+      stride: 4
+    byte_offset: 32
+    fieldset: FCR
+fieldset/CFGLOCK:
+  description: MPCBB configuration lock register.
+  fields:
+  - name: SPLCK
+    bit_offset: 0
+    bit_size: 32
 fieldset/CR:
   description: GTZC1 TZSC control register.
   fields:
   - name: LCK
     description: lock the configuration of TZSC_SECCFGRx and TZSC_PRIVCFGRx until next reset This bit is cleared by default and once set, it can not be reset until system reset.
     bit_offset: 0
+    bit_size: 1
+fieldset/FCR:
+  description: TZIC flag clear register.
+  fields:
+  - name: CF
+    bit_offset: 0
+    bit_size: 32
+fieldset/IER:
+  description: TZIC interrupt enable register.
+  fields:
+  - name: IE
+    bit_offset: 0
+    bit_size: 32
+fieldset/MPCBB_CR:
+  description: MPCBB control register.
+  fields:
+  - name: GLOCK
+    bit_offset: 0
+    bit_size: 1
+  - name: INVSECSTATE
+    bit_offset: 30
+    bit_size: 1
+  - name: SRWILADIS
+    bit_offset: 31
     bit_size: 1
 fieldset/MPCWM1ACFGR:
   description: GTZC1 TZSC memory 1 sub-region A watermark configuration register.
@@ -340,6 +419,12 @@ fieldset/MPCWM4BR:
     description: Length of sub-region B in region x This field defines the length of the sub-region B, to be multiplied by the granularity defined in Table�30. When SUBB_START + SUBB_LENGTH is higher than the maximum size allowed for the memory, a saturation of SUBB_LENGTH is applied automatically. If SUBB_LENGTH = 0, the sub-region B is disabled.(SREN bit in TZSC_MPCMWxBCFGR is cleared).
     bit_offset: 16
     bit_size: 12
+fieldset/PRIVCFGR:
+  description: MPCBB privilege configuration register.
+  fields:
+  - name: PRIV
+    bit_offset: 0
+    bit_size: 32
 fieldset/PRIVCFGR1:
   description: GTZC1 TZSC privilege configuration register 1.
   fields:
@@ -486,6 +571,18 @@ fieldset/PRIVCFGR2:
     description: privileged access mode for UCPD.
     bit_offset: 2
     bit_size: 1
+  - name: OPAMPPRIV
+    description: privileged access mode for OPAMP.
+    bit_offset: 3
+    bit_size: 1
+  - name: COMPPRIV
+    description: privileged access mode for COMP.
+    bit_offset: 4
+    bit_size: 1
+  - name: FDCAN3PRIV
+    description: privileged access mode for FDCAN3.
+    bit_offset: 5
+    bit_size: 1
   - name: TIM1PRIV
     description: privileged access mode for TIM1.
     bit_offset: 8
@@ -530,9 +627,13 @@ fieldset/PRIVCFGR2:
     description: privileged access mode for SAI2.
     bit_offset: 18
     bit_size: 1
-  - name: USBPRIV
-    description: privileged access mode for USB.
-    bit_offset: 19
+  - name: LTDCPRIV
+    description: privileged access mode for LTDC.
+    bit_offset: 20
+    bit_size: 1
+  - name: GFXTIMPRIV
+    description: privileged access mode for GFXTIM.
+    bit_offset: 21
     bit_size: 1
   - name: SPI5PRIV
     description: privileged access mode for SPI5.
@@ -577,6 +678,26 @@ fieldset/PRIVCFGR3:
     description: privileged access mode for VREFBUF.
     bit_offset: 1
     bit_size: 1
+  - name: I3C2PRIV
+    description: privileged access mode for I3C2.
+    bit_offset: 2
+    bit_size: 1
+  - name: CCBPRIV
+    description: privileged access mode for CCB.
+    bit_offset: 4
+    bit_size: 1
+  - name: OCTOSPIMPRIV
+    description: privileged access mode for OCTOSPIM.
+    bit_offset: 5
+    bit_size: 1
+  - name: ADC3PRIV
+    description: privileged access mode for ADC3.
+    bit_offset: 6
+    bit_size: 1
+  - name: ADF1PRIV
+    description: privileged access mode for ADF1.
+    bit_offset: 7
+    bit_size: 1
   - name: CRCPRIV
     description: privileged access mode for CRC.
     bit_offset: 8
@@ -588,6 +709,10 @@ fieldset/PRIVCFGR3:
   - name: FMACPRIV
     description: privileged access mode for FMAC.
     bit_offset: 10
+    bit_size: 1
+  - name: ETHPRIV
+    description: privileged access mode for register of ETH.
+    bit_offset: 11
     bit_size: 1
   - name: ICACHEPRIV
     description: privileged access mode for ICACHE.
@@ -605,6 +730,10 @@ fieldset/PRIVCFGR3:
     description: privileged access mode for DCMI.
     bit_offset: 15
     bit_size: 1
+  - name: AESPRIV
+    description: privileged access mode for AES.
+    bit_offset: 16
+    bit_size: 1
   - name: HASHPRIV
     description: privileged access mode for HASH.
     bit_offset: 17
@@ -613,8 +742,20 @@ fieldset/PRIVCFGR3:
     description: privileged access mode for RNG.
     bit_offset: 18
     bit_size: 1
+  - name: SAESPRIV
+    description: privileged access mode for SAES.
+    bit_offset: 19
+    bit_size: 1
+  - name: PKAPRIV
+    description: privileged access mode for PKA.
+    bit_offset: 20
+    bit_size: 1
   - name: SDMMC1PRIV
     description: privileged access mode for SDMMC1.
+    bit_offset: 21
+    bit_size: 1
+  - name: SDMMC2PRIV
+    description: privileged access mode for SDMMC2.
     bit_offset: 22
     bit_size: 1
   - name: FMCPRIV
@@ -625,10 +766,40 @@ fieldset/PRIVCFGR3:
     description: privileged access mode for OCTOSPI1.
     bit_offset: 24
     bit_size: 1
+  - name: OCTOSPI2PRIV
+    description: privileged access mode for OCTOSPI2.
+    bit_offset: 25
+    bit_size: 1
   - name: RAMCFGPRIV
     description: privileged access mode for RAMSCFG.
     bit_offset: 26
     bit_size: 1
+  - name: MDF1PRIV
+    description: privileged access mode for MDF1.
+    bit_offset: 27
+    bit_size: 1
+  - name: DMA2DPRIV
+    description: privileged access mode for DMA2D.
+    bit_offset: 28
+    bit_size: 1
+  - name: JPEGPRIV
+    description: privileged access mode for JPEG.
+    bit_offset: 29
+    bit_size: 1
+  - name: OTGHSPRIV
+    description: privileged access mode for OTGHS.
+    bit_offset: 30
+    bit_size: 1
+  - name: OTGFSPRIV
+    description: privileged access mode for OTGFS.
+    bit_offset: 31
+    bit_size: 1
+fieldset/SECCFGR:
+  description: MPCBB security configuration register.
+  fields:
+  - name: SEC
+    bit_offset: 0
+    bit_size: 32
 fieldset/SECCFGR1:
   description: GTZC1 TZSC secure configuration register 1.
   fields:
@@ -775,6 +946,18 @@ fieldset/SECCFGR2:
     description: secure access mode for UCPD.
     bit_offset: 2
     bit_size: 1
+  - name: OPAMPSEC
+    description: Secure access mode for OPAMP.
+    bit_offset: 3
+    bit_size: 1
+  - name: COMPSEC
+    description: Secure access mode for COMP.
+    bit_offset: 4
+    bit_size: 1
+  - name: FDCAN3SEC
+    description: Secure access mode for FDCAN3.
+    bit_offset: 5
+    bit_size: 1
   - name: TIM1SEC
     description: secure access mode for TIM1.
     bit_offset: 8
@@ -819,9 +1002,13 @@ fieldset/SECCFGR2:
     description: secure access mode for SAI2.
     bit_offset: 18
     bit_size: 1
-  - name: USBSEC
-    description: secure access mode for USB.
-    bit_offset: 19
+  - name: LTDCSEC
+    description: Secure access mode for LTDC.
+    bit_offset: 20
+    bit_size: 1
+  - name: GFXTIMSEC
+    description: Secure access mode for GFXTIM.
+    bit_offset: 21
     bit_size: 1
   - name: SPI5SEC
     description: secure access mode for SPI5.
@@ -866,6 +1053,26 @@ fieldset/SECCFGR3:
     description: secure access mode for VREFBUF.
     bit_offset: 1
     bit_size: 1
+  - name: I3C2SEC
+    description: Secure access mode for I3C2.
+    bit_offset: 2
+    bit_size: 1
+  - name: CCBSEC
+    description: Secure access mode for CCB.
+    bit_offset: 4
+    bit_size: 1
+  - name: OCTOSPIMSEC
+    description: Secure access mode for OCTOSPIM.
+    bit_offset: 5
+    bit_size: 1
+  - name: ADC3SEC
+    description: Secure access mode for ADC3.
+    bit_offset: 6
+    bit_size: 1
+  - name: ADF1SEC
+    description: Secure access mode for ADF1.
+    bit_offset: 7
+    bit_size: 1
   - name: CRCSEC
     description: secure access mode for CRC.
     bit_offset: 8
@@ -877,6 +1084,10 @@ fieldset/SECCFGR3:
   - name: FMACSEC
     description: secure access mode for FMAC.
     bit_offset: 10
+    bit_size: 1
+  - name: ETHSEC
+    description: Secure access mode for register of ETH.
+    bit_offset: 11
     bit_size: 1
   - name: ICACHESEC
     description: secure access mode for ICACHE.
@@ -894,6 +1105,10 @@ fieldset/SECCFGR3:
     description: secure access mode for DCMI.
     bit_offset: 15
     bit_size: 1
+  - name: AESSEC
+    description: Secure access mode for AES.
+    bit_offset: 16
+    bit_size: 1
   - name: HASHSEC
     description: secure access mode for HASH.
     bit_offset: 17
@@ -902,8 +1117,20 @@ fieldset/SECCFGR3:
     description: secure access mode for RNG.
     bit_offset: 18
     bit_size: 1
+  - name: SAESSEC
+    description: Secure access mode for SAES.
+    bit_offset: 19
+    bit_size: 1
+  - name: PKASEC
+    description: Secure access mode for PKA.
+    bit_offset: 20
+    bit_size: 1
   - name: SDMMC1SEC
     description: secure access mode for SDMMC1.
+    bit_offset: 21
+    bit_size: 1
+  - name: SDMMC2SEC
+    description: Secure access mode for SDMMC2.
     bit_offset: 22
     bit_size: 1
   - name: FMCSEC
@@ -914,113 +1141,37 @@ fieldset/SECCFGR3:
     description: secure access mode for OCTOSPI1.
     bit_offset: 24
     bit_size: 1
+  - name: OCTOSPI2SEC
+    description: Secure access mode for OCTOSPI2.
+    bit_offset: 25
+    bit_size: 1
   - name: RAMCFGSEC
     description: secure access mode for RAMSCFG.
     bit_offset: 26
     bit_size: 1
-
-block/MPCBB:
-  description: Block-based memory protection controller.
-  items:
-  - name: CR
-    description: MPCBB control register.
-    byte_offset: 0
-    fieldset: MPCBB_CR
-  - name: CFGLOCK
-    description: MPCBB configuration lock register.
-    byte_offset: 16
-    fieldset: CFGLOCK
-  - name: SECCFGR
-    description: MPCBB security configuration register.
-    byte_offset: 256
-    array:
-      len: 32
-      stride: 4
-    fieldset: SECCFGR
-  - name: PRIVCFGR
-    description: MPCBB privilege configuration register.
-    byte_offset: 512
-    array:
-      len: 32
-      stride: 4
-    fieldset: PRIVCFGR
-
-block/TZIC:
-  description: TrustZone interrupt controller.
-  items:
-  - name: IER
-    description: TZIC interrupt enable register.
-    byte_offset: 0
-    array:
-      len: 4
-      stride: 4
-    fieldset: IER
-  - name: SR
-    description: TZIC status register.
-    byte_offset: 16
-    array:
-      len: 4
-      stride: 4
-    fieldset: SR
-  - name: FCR
-    description: TZIC flag clear register.
-    byte_offset: 32
-    array:
-      len: 4
-      stride: 4
-    fieldset: FCR
-
-fieldset/MPCBB_CR:
-  description: MPCBB control register.
-  fields:
-  - name: GLOCK
-    bit_offset: 0
+  - name: MDF1SEC
+    description: Secure access mode for MDF1.
+    bit_offset: 27
     bit_size: 1
-  - name: INVSECSTATE
+  - name: DMA2DSEC
+    description: Secure access mode for DMA2D.
+    bit_offset: 28
+    bit_size: 1
+  - name: JPEGSEC
+    description: Secure access mode for JPEG.
+    bit_offset: 29
+    bit_size: 1
+  - name: OTGHSSEC
+    description: Secure access mode for OTGHS.
     bit_offset: 30
     bit_size: 1
-  - name: SRWILADIS
+  - name: OTGFSSEC
+    description: Secure access mode for OTGFS.
     bit_offset: 31
     bit_size: 1
-
-fieldset/CFGLOCK:
-  description: MPCBB configuration lock register.
-  fields:
-  - name: SPLCK
-    bit_offset: 0
-    bit_size: 32
-
-fieldset/SECCFGR:
-  description: MPCBB security configuration register.
-  fields:
-  - name: SEC
-    bit_offset: 0
-    bit_size: 32
-
-fieldset/PRIVCFGR:
-  description: MPCBB privilege configuration register.
-  fields:
-  - name: PRIV
-    bit_offset: 0
-    bit_size: 32
-
-fieldset/IER:
-  description: TZIC interrupt enable register.
-  fields:
-  - name: IE
-    bit_offset: 0
-    bit_size: 32
-
 fieldset/SR:
   description: TZIC status register.
   fields:
   - name: F
-    bit_offset: 0
-    bit_size: 32
-
-fieldset/FCR:
-  description: TZIC flag clear register.
-  fields:
-  - name: CF
     bit_offset: 0
     bit_size: 32

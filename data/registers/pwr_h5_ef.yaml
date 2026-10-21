@@ -170,24 +170,49 @@ fieldset/PMCR:
     bit_offset: 16
     bit_size: 1
     enum: ShutOff
-  - name: SRAM3SO
-    description: AHB SRAM3 shut-off in Stop mode.
-    bit_offset: 23
+  - name: LTDCSO
+    description: LTDC FIFO RAM shut-off in Stop mode.
+    bit_offset: 17
     bit_size: 1
     enum: ShutOff
-  - name: SRAM2_16SO
-    description: AHB SRAM2 16-Kbyte shut-off in Stop mode.
+  - name: SRAM5SO
+    description: AHB SRAM5 shut-off in Stop mode.
     bit_offset: 24
     bit_size: 1
     enum: ShutOff
-  - name: SRAM2_48SO
-    description: AHB SRAM2 48-Kbyte shut-off in Stop mode.
+  - name: SRAM4SO
+    description: AHB SRAM4 shut-off in Stop mode.
     bit_offset: 25
+    bit_size: 1
+    enum: ShutOff
+  - name: SRAM3SO
+    description: AHB SRAM3 shut-off in Stop mode.
+    bit_offset: 26
+    bit_size: 1
+    enum: ShutOff
+  - name: SRAM2_16SOL
+    description: AHB SRAM2 16-Kbyte Low shut-off in Stop mode.
+    bit_offset: 27
+    bit_size: 1
+    enum: ShutOff
+  - name: SRAM2_16SOH
+    description: AHB SRAM2 16-Kbyte High shut-off in Stop mode.
+    bit_offset: 28
+    bit_size: 1
+    enum: ShutOff
+  - name: SRAM2_48SOL
+    description: AHB SRAM2 48-Kbyte Low shut-off in Stop mode.
+    bit_offset: 29
+    bit_size: 1
+    enum: ShutOff
+  - name: SRAM2_48SOH
+    description: AHB SRAM2 48-Kbyte High shut-off in Stop mode.
+    bit_offset: 30
     bit_size: 1
     enum: ShutOff
   - name: SRAM1SO
     description: AHB SRAM1 shut-off in Stop mode.
-    bit_offset: 26
+    bit_offset: 31
     bit_size: 1
     enum: ShutOff
 fieldset/PMSR:
@@ -278,6 +303,10 @@ fieldset/USBSCR:
   - name: USB33SV
     description: independent USB supply valid This bit is used to validate the V_DDUSB supply for electrical and logical isolation purpose. Setting this bit is mandatory to use the USBFS peripheral. If V_DDUSB is not always present in the application, the V_DDUSB voltage monitor can be used to determine whether this supply is ready or not.
     bit_offset: 25
+    bit_size: 1
+  - name: OTGHSEN
+    description: OTGHS PHY enable.
+    bit_offset: 27
     bit_size: 1
 fieldset/VMCR:
   description: PWR voltage monitor control register.

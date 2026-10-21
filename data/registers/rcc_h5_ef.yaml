@@ -205,9 +205,17 @@ fieldset/AHB1ENR:
     description: "FMAC clock enable\r Set and reset by software."
     bit_offset: 15
     bit_size: 1
+  - name: MDF1EN
+    description: MDF1 clock enable.
+    bit_offset: 16
+    bit_size: 1
   - name: RAMCFGEN
     description: "RAMCFG clock enable\r Set and reset by software."
     bit_offset: 17
+    bit_size: 1
+  - name: ETHCKEN
+    description: ETH internal clock enable.
+    bit_offset: 18
     bit_size: 1
   - name: ETHEN
     description: "ETH clock enable\r Set and reset by software"
@@ -220,6 +228,14 @@ fieldset/AHB1ENR:
   - name: ETHRXEN
     description: "ETHRX clock enable\r Set and reset by software"
     bit_offset: 21
+    bit_size: 1
+  - name: DMA2DEN
+    description: DMA2D clock enable.
+    bit_offset: 22
+    bit_size: 1
+  - name: JPEGEN
+    description: JPEG clock enable.
+    bit_offset: 23
     bit_size: 1
   - name: TZSC1EN
     description: "TZSC1 clock enable\r Set and reset by software"
@@ -264,9 +280,17 @@ fieldset/AHB1LPENR:
     description: "FMAC clock enable during sleep mode\r Set and reset by software."
     bit_offset: 15
     bit_size: 1
+  - name: MDF1LPEN
+    description: MDF1 clock enable during Sleep mode.
+    bit_offset: 16
+    bit_size: 1
   - name: RAMCFGLPEN
     description: "RAMCFG clock enable during sleep mode\r Set and reset by software."
     bit_offset: 17
+    bit_size: 1
+  - name: ETHCKLPEN
+    description: ETH internal clock enable during Sleep mode.
+    bit_offset: 18
     bit_size: 1
   - name: ETHLPEN
     description: "ETH clock enable during Sleep mode\r Set and reset by software"
@@ -279,6 +303,14 @@ fieldset/AHB1LPENR:
   - name: ETHRXLPEN
     description: "ETHRX clock enable during sleep mode\r Set and reset by software"
     bit_offset: 21
+    bit_size: 1
+  - name: DMA2DLPEN
+    description: DMA2D clock enable during Sleep mode.
+    bit_offset: 22
+    bit_size: 1
+  - name: JPEGLPEN
+    description: JPEG clock enable during Sleep mode.
+    bit_offset: 23
     bit_size: 1
   - name: TZSC1LPEN
     description: "TZSC1 clock enable during sleep mode\r Set and reset by software"
@@ -323,6 +355,10 @@ fieldset/AHB1RSTR:
     description: "FMAC block reset\r Set and reset by software."
     bit_offset: 15
     bit_size: 1
+  - name: MDF1RST
+    description: MDF1 reset.
+    bit_offset: 16
+    bit_size: 1
   - name: RAMCFGRST
     description: "RAMCFG block reset\r Set and reset by software."
     bit_offset: 17
@@ -331,9 +367,13 @@ fieldset/AHB1RSTR:
     description: "ETH1 block reset\r Set and reset by software"
     bit_offset: 19
     bit_size: 1
-  - name: TZSC1RST
-    description: "TZSC1 reset\r Set and reset by software"
-    bit_offset: 24
+  - name: DMA2DRST
+    description: DMA2D reset.
+    bit_offset: 22
+    bit_size: 1
+  - name: JPEGRST
+    description: JPEG reset.
+    bit_offset: 23
     bit_size: 1
 fieldset/AHB2ENR:
   description: RCC AHB2 peripheral clock register
@@ -374,6 +414,10 @@ fieldset/AHB2ENR:
     description: "GPIOI clock enable\r Set and reset by software."
     bit_offset: 8
     bit_size: 1
+  - name: GPIOJEN
+    description: GPIOJ clock enable.
+    bit_offset: 9
+    bit_size: 1
   - name: ADC12EN
     description: "ADC1 and 2 peripherals clock enabled\r Set and reset by software."
     bit_offset: 10
@@ -385,6 +429,18 @@ fieldset/AHB2ENR:
   - name: DCMI_PSSIEN
     description: "digital camera interface clock enable (DCMI or PSSI depending which interface is active)\r Set and reset by software."
     bit_offset: 12
+    bit_size: 1
+  - name: OTGPHYEN
+    description: OTGPHY clock enable.
+    bit_offset: 13
+    bit_size: 1
+  - name: OTGHSEN
+    description: OTGHS clock enable.
+    bit_offset: 14
+    bit_size: 1
+  - name: OTGFSEN
+    description: OTGFS clock enable.
+    bit_offset: 15
     bit_size: 1
   - name: AESEN
     description: "AES clock enable\r Set and reset by software."
@@ -405,6 +461,30 @@ fieldset/AHB2ENR:
   - name: SAESEN
     description: "SAES clock enable\r Set and reset by software."
     bit_offset: 20
+    bit_size: 1
+  - name: CCBEN
+    description: CCB clock enable.
+    bit_offset: 21
+    bit_size: 1
+  - name: ADC3EN
+    description: ADC3 clock enable.
+    bit_offset: 24
+    bit_size: 1
+  - name: ADF1EN
+    description: ADF1 clock enable.
+    bit_offset: 25
+    bit_size: 1
+  - name: GPIOKEN
+    description: GPIOK clock enable.
+    bit_offset: 26
+    bit_size: 1
+  - name: SRAM4EN
+    description: SRAM4 clock enable.
+    bit_offset: 28
+    bit_size: 1
+  - name: SRAM5EN
+    description: SRAM5 clock enable.
+    bit_offset: 29
     bit_size: 1
   - name: SRAM3EN
     description: "SRAM3 clock enable\r Set and reset by software."
@@ -453,6 +533,10 @@ fieldset/AHB2LPENR:
     description: "GPIOI clock enable during sleep mode\r Set and reset by software."
     bit_offset: 8
     bit_size: 1
+  - name: GPIOJLPEN
+    description: GPIOJ clock enable during Sleep mode.
+    bit_offset: 9
+    bit_size: 1
   - name: ADC12LPEN
     description: "ADC1 and 2 peripherals clock enable during sleep mode\r Set and reset by software."
     bit_offset: 10
@@ -464,6 +548,18 @@ fieldset/AHB2LPENR:
   - name: DCMI_PSSILPEN
     description: "digital camera interface clock enable during sleep mode (DCMI or PSSI depending which interface is active)\r Set and reset by software."
     bit_offset: 12
+    bit_size: 1
+  - name: OTGPHYLPEN
+    description: OTGPHY clock enable during Sleep mode.
+    bit_offset: 13
+    bit_size: 1
+  - name: OTGHSLPEN
+    description: OTGHS clock enable during Sleep mode.
+    bit_offset: 14
+    bit_size: 1
+  - name: OTGFSLPEN
+    description: OTGFS clock enable during Sleep mode.
+    bit_offset: 15
     bit_size: 1
   - name: AESLPEN
     description: "AES clock enable during sleep mode\r Set and reset by software."
@@ -484,6 +580,30 @@ fieldset/AHB2LPENR:
   - name: SAESLPEN
     description: "SAES clock enable during sleep mode\r Set and reset by software."
     bit_offset: 20
+    bit_size: 1
+  - name: CCBLPEN
+    description: CCB clock enable during Sleep mode.
+    bit_offset: 21
+    bit_size: 1
+  - name: ADC3LPEN
+    description: ADC3 clock enable during Sleep mode.
+    bit_offset: 24
+    bit_size: 1
+  - name: ADF1LPEN
+    description: ADF1 clock enable during Sleep mode.
+    bit_offset: 25
+    bit_size: 1
+  - name: GPIOKLPEN
+    description: GPIOK clock enable during Sleep mode.
+    bit_offset: 26
+    bit_size: 1
+  - name: SRAM4LPEN
+    description: SRAM4 clock enable during Sleep mode.
+    bit_offset: 28
+    bit_size: 1
+  - name: SRAM5LPEN
+    description: SRAM5 clock enable during Sleep mode.
+    bit_offset: 29
     bit_size: 1
   - name: SRAM2LPEN
     description: "SRAM2 clock enable during sleep mode\r Set and reset by software."
@@ -532,6 +652,10 @@ fieldset/AHB2RSTR:
     description: "GPIOI block reset\r Set and reset by software."
     bit_offset: 8
     bit_size: 1
+  - name: GPIOJRST
+    description: GPIOJ reset.
+    bit_offset: 9
+    bit_size: 1
   - name: ADC12RST
     description: "ADC1 and 2 blocks reset\r Set and reset by software."
     bit_offset: 10
@@ -543,6 +667,18 @@ fieldset/AHB2RSTR:
   - name: DCMI_PSSIRST
     description: "digital camera interface block reset (DCMI or PSSI depending which interface is active)\r Set and reset by software."
     bit_offset: 12
+    bit_size: 1
+  - name: OTGPHYRST
+    description: OTGPHY reset.
+    bit_offset: 13
+    bit_size: 1
+  - name: OTGHSRST
+    description: OTGHS reset.
+    bit_offset: 14
+    bit_size: 1
+  - name: OTGFSRST
+    description: OTGFS reset.
+    bit_offset: 15
     bit_size: 1
   - name: AESRST
     description: "AES block reset\r Set and reset by software."
@@ -564,12 +700,32 @@ fieldset/AHB2RSTR:
     description: "SAES block reset\r Set and reset by software."
     bit_offset: 20
     bit_size: 1
+  - name: CCBRST
+    description: CCB reset.
+    bit_offset: 21
+    bit_size: 1
+  - name: ADC3RST
+    description: ADC3 reset.
+    bit_offset: 24
+    bit_size: 1
+  - name: ADF1RST
+    description: ADF1 reset.
+    bit_offset: 25
+    bit_size: 1
+  - name: GPIOKRST
+    description: GPIOK reset.
+    bit_offset: 26
+    bit_size: 1
 fieldset/AHB4ENR:
   description: RCC AHB4 peripheral clock register
   fields:
   - name: OTFDEC1EN
     description: "OTFDEC1 clock enable\r Set and reset by software."
     bit_offset: 7
+    bit_size: 1
+  - name: OTFDEC2EN
+    description: OTFDEC2 clock enable.
+    bit_offset: 8
     bit_size: 1
   - name: SDMMC1EN
     description: SDMMC1 and SDMMC1 delay peripheral clock enable reset
@@ -587,12 +743,24 @@ fieldset/AHB4ENR:
     description: "OCTOSPI1 clock enable\r Set and reset by software."
     bit_offset: 20
     bit_size: 1
+  - name: OCTOSPI2EN
+    description: OCTOSPI2 clock enable.
+    bit_offset: 21
+    bit_size: 1
+  - name: OCTOSPIMEN
+    description: OCTOSPIM clock enable.
+    bit_offset: 22
+    bit_size: 1
 fieldset/AHB4LPENR:
   description: RCC AHB4 sleep clock register
   fields:
   - name: OTFDEC1LPEN
     description: "OTFDEC1 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 7
+    bit_size: 1
+  - name: OTFDEC2LPEN
+    description: OTFDEC2 clock enable during Sleep mode.
+    bit_offset: 8
     bit_size: 1
   - name: SDMMC1LPEN
     description: "SDMMC1 and SDMMC1 delay peripheral clock enable during sleep mode\r Set and reset by software"
@@ -610,12 +778,24 @@ fieldset/AHB4LPENR:
     description: "OCTOSPI1 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 20
     bit_size: 1
+  - name: OCTOSPI2LPEN
+    description: OCTOSPI2 clock enable during Sleep mode.
+    bit_offset: 21
+    bit_size: 1
+  - name: OCTOSPIMLPEN
+    description: OCTOSPIM clock enable during Sleep mode.
+    bit_offset: 22
+    bit_size: 1
 fieldset/AHB4RSTR:
   description: RCC AHB4 peripheral reset register
   fields:
   - name: OTFDEC1RST
     description: "OTFDEC1 block reset\r Set and reset by software."
     bit_offset: 7
+    bit_size: 1
+  - name: OTFDEC2RST
+    description: OTFDEC2 reset.
+    bit_offset: 8
     bit_size: 1
   - name: SDMMC1RST
     description: "SDMMC1 and SDMMC1 delay blocks reset\r Set and reset by software."
@@ -632,6 +812,14 @@ fieldset/AHB4RSTR:
   - name: OCTOSPI1RST
     description: "OCTOSPI1 block reset\r Set and reset by software."
     bit_offset: 20
+    bit_size: 1
+  - name: OCTOSPI2RST
+    description: OCTOSPI2 reset.
+    bit_offset: 21
+    bit_size: 1
+  - name: OCTOSPIMRST
+    description: OCTOSPIM reset.
+    bit_offset: 22
     bit_size: 1
 fieldset/APB1HENR:
   description: RCC APB1 peripheral clock register
@@ -652,8 +840,8 @@ fieldset/APB1HENR:
     description: "LPTIM2 clock enable\r Set and reset by software."
     bit_offset: 5
     bit_size: 1
-  - name: FDCAN12EN
-    description: "FDCAN1 and FDCAN2 peripheral clock enable\r Set and reset by software."
+  - name: FDCANEN
+    description: "FDCAN1, FDCAN2 and FDCAN3 peripheral clock enable\r Set and reset by software."
     bit_offset: 9
     bit_size: 1
   - name: UCPDEN
@@ -679,8 +867,8 @@ fieldset/APB1HLPENR:
     description: "LPTIM2 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 5
     bit_size: 1
-  - name: FDCAN12LPEN
-    description: "FDCAN1 and FDCAN2 peripheral clock enable during sleep mode\r Set and reset by software."
+  - name: FDCANLPEN
+    description: "FDCAN1, FDCAN2 and FDCAN3 peripheral clock enable during sleep mode\r Set and reset by software."
     bit_offset: 9
     bit_size: 1
   - name: UCPDLPEN
@@ -706,8 +894,8 @@ fieldset/APB1HRSTR:
     description: "LPTIM2 block reset\r Set and reset by software."
     bit_offset: 5
     bit_size: 1
-  - name: FDCAN12RST
-    description: "FDCAN1 and FDCAN2 blocks reset\r Set and reset by software."
+  - name: FDCANRST
+    description: "FDCAN1, FDCAN2 and FDCAN3 blocks reset\r Set and reset by software."
     bit_offset: 9
     bit_size: 1
   - name: UCPDRST
@@ -757,6 +945,10 @@ fieldset/APB1LENR:
     description: "WWDG clock enable\r Set and reset by software."
     bit_offset: 11
     bit_size: 1
+  - name: OPAMPEN
+    description: OPAMP clock enable.
+    bit_offset: 13
+    bit_size: 1
   - name: SPI2EN
     description: "SPI2 clock enable\r Set and reset by software."
     bit_offset: 14
@@ -764,6 +956,10 @@ fieldset/APB1LENR:
   - name: SPI3EN
     description: "SPI3 clock enable\r Set and reset by software."
     bit_offset: 15
+    bit_size: 1
+  - name: COMPEN
+    description: COMP clock enable.
+    bit_offset: 16
     bit_size: 1
   - name: USART2EN
     description: "USART2 clock enable\r Set and reset by software."
@@ -864,6 +1060,10 @@ fieldset/APB1LLPENR:
     description: "WWDG clock enable during sleep mode\r Set and reset by software."
     bit_offset: 11
     bit_size: 1
+  - name: OPAMPLPEN
+    description: OPAMP clock enable during Sleep mode.
+    bit_offset: 13
+    bit_size: 1
   - name: SPI2LPEN
     description: "SPI2 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 14
@@ -871,6 +1071,10 @@ fieldset/APB1LLPENR:
   - name: SPI3LPEN
     description: "SPI3 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 15
+    bit_size: 1
+  - name: COMPLPEN
+    description: COMP clock enable during Sleep mode.
+    bit_offset: 16
     bit_size: 1
   - name: USART2LPEN
     description: "USART2 clock enable during sleep mode\r Set and reset by software."
@@ -967,6 +1171,10 @@ fieldset/APB1LRSTR:
     description: "TIM14 block reset\r Set and reset by software."
     bit_offset: 8
     bit_size: 1
+  - name: OPAMPRST
+    description: OPAMP reset.
+    bit_offset: 13
+    bit_size: 1
   - name: SPI2RST
     description: "SPI2 block reset\r Set and reset by software."
     bit_offset: 14
@@ -974,6 +1182,10 @@ fieldset/APB1LRSTR:
   - name: SPI3RST
     description: "SPI3 block reset\r Set and reset by software."
     bit_offset: 15
+    bit_size: 1
+  - name: COMPRST
+    description: COMP reset.
+    bit_offset: 16
     bit_size: 1
   - name: USART2RST
     description: "USART2 block reset\r Set and reset by software."
@@ -1078,9 +1290,13 @@ fieldset/APB2ENR:
     description: "SAI2 clock enable\r Set and cleared by software."
     bit_offset: 22
     bit_size: 1
-  - name: USBEN
-    description: "USB clock enable\r Set and reset by software."
-    bit_offset: 24
+  - name: LTDCEN
+    description: LTDC clock enable.
+    bit_offset: 27
+    bit_size: 1
+  - name: GFXTIMEN
+    description: GFXTIM clock enable.
+    bit_offset: 29
     bit_size: 1
 fieldset/APB2LPENR:
   description: RCC APB2 sleep clock register
@@ -1129,9 +1345,13 @@ fieldset/APB2LPENR:
     description: "SAI2 clock enable during sleep mode\r Set and reset by software."
     bit_offset: 22
     bit_size: 1
-  - name: USBLPEN
-    description: "USB clock enable during sleep mode\r Set and reset by software."
-    bit_offset: 24
+  - name: LTDCLPEN
+    description: LTDC clock enable during Sleep mode.
+    bit_offset: 27
+    bit_size: 1
+  - name: GFXTIMLPEN
+    description: GFXTIM clock enable during Sleep mode.
+    bit_offset: 29
     bit_size: 1
 fieldset/APB2RSTR:
   description: RCC APB2 peripheral reset register
@@ -1180,9 +1400,13 @@ fieldset/APB2RSTR:
     description: "SAI2 block reset\r Set and reset by software."
     bit_offset: 22
     bit_size: 1
-  - name: USBRST
-    description: "USB block reset\r Set and reset by software."
-    bit_offset: 24
+  - name: LTDCRST
+    description: LTDC reset.
+    bit_offset: 27
+    bit_size: 1
+  - name: GFXTIMRST
+    description: GFXTIM reset.
+    bit_offset: 29
     bit_size: 1
 fieldset/APB3ENR:
   description: RCC APB3 peripheral clock register
@@ -1239,6 +1463,14 @@ fieldset/APB3ENR:
     description: "RTC APB interface clock enable\r Set and reset by software."
     bit_offset: 21
     bit_size: 1
+  - name: PLAY1APBEN
+    description: clock enable for PLAY1 configuration.
+    bit_offset: 22
+    bit_size: 1
+  - name: PLAY1EN
+    description: PLAY1 clock enable.
+    bit_offset: 23
+    bit_size: 1
 fieldset/APB3LPENR:
   description: RCC APB3 sleep clock register
   fields:
@@ -1294,13 +1526,13 @@ fieldset/APB3LPENR:
     description: "RTC APB interface clock enable during sleep mode\r Set and reset by software."
     bit_offset: 21
     bit_size: 1
+  - name: PLAY1LPEN
+    description: PLAY1 clock enable during Sleep mode.
+    bit_offset: 23
+    bit_size: 1
 fieldset/APB3RSTR:
   description: RCC APB3 peripheral reset register
   fields:
-  - name: SYSCFGRST
-    description: "SBS block reset\r Set and reset by software."
-    bit_offset: 1
-    bit_size: 1
   - name: SPI5RST
     description: "SPI5 block reset\r Set and reset by software."
     bit_offset: 5
@@ -1344,6 +1576,14 @@ fieldset/APB3RSTR:
   - name: VREFRST
     description: "VREF block reset\r Set and reset by software."
     bit_offset: 20
+    bit_size: 1
+  - name: PLAY1POR
+    description: PLAY1 POR reset.
+    bit_offset: 22
+    bit_size: 1
+  - name: PLAY1RST
+    description: PLAY1 reset.
+    bit_offset: 23
     bit_size: 1
 fieldset/BDCR:
   description: RCC Backup domain control register
@@ -1474,7 +1714,7 @@ fieldset/CCIPR2:
     bit_offset: 0
     bit_size: 3
     enum: USARTSEL
-  - name: USART12SEL
+  - name: UART12SEL
     description: "USART12 kernel clock source selection\r Set and reset by software.\r others: reserved, the kernel clock is disabled"
     bit_offset: 4
     bit_size: 3
@@ -1542,11 +1782,20 @@ fieldset/CCIPR3:
     bit_offset: 15
     bit_size: 3
     enum: SPI6SEL
+  - name: PLAY1DIV
+    description: 2^N divider with N=0 to N=15.
+    bit_offset: 20
+    bit_size: 4
   - name: LPUART1SEL
     description: "LPUART1 kernel clock source selection\r others: reserved, the kernel clock is disabled"
     bit_offset: 24
     bit_size: 3
     enum: LPUSARTSEL
+  - name: PLAY1SEL
+    description: PLAY1 kernel clock source selection.
+    bit_offset: 29
+    bit_size: 3
+    enum: LPTIMSEL
 fieldset/CCIPR4:
   description: RCC kernel clock configuration register
   fields:
@@ -1560,11 +1809,11 @@ fieldset/CCIPR4:
     bit_offset: 2
     bit_size: 2
     enum: SYSTICKSEL
-  - name: USBSEL
+  - name: OTGFSSEL
     description: USB kernel clock source selection
     bit_offset: 4
     bit_size: 2
-    enum: USBSEL
+    enum: OTGFSSEL
   - name: SDMMC1SEL
     description: SDMMC1 kernel clock source selection
     bit_offset: 6
@@ -1575,6 +1824,25 @@ fieldset/CCIPR4:
     bit_offset: 7
     bit_size: 1
     enum: SDMMCSEL
+  - name: ETHCLKSEL
+    description: ETH clock selection.
+    bit_offset: 8
+    bit_size: 1
+    enum: ETHCLKSEL
+  - name: OTGPDCTRL
+    description: OTG_HS PHY common block power-down control.
+    bit_offset: 9
+    bit_size: 1
+  - name: OTGHSSEL
+    description: OTG_HS PHY kernel clock source selection.
+    bit_offset: 10
+    bit_size: 2
+    enum: OTGHSSEL
+  - name: OTGPHYREFCKSEL
+    description: OTG_HS PHY kernel clock frequency selection.
+    bit_offset: 12
+    bit_size: 4
+    enum: OTGPHYREFCKSEL
   - name: I2C1SEL
     description: I2C1 kernel clock source selection
     bit_offset: 16
@@ -1605,6 +1873,10 @@ fieldset/CCIPR4:
     bit_offset: 26
     bit_size: 2
     enum: I2C34SEL
+  - name: ETHPTPDIV
+    description: Ethernet PTP clock division.
+    bit_offset: 28
+    bit_size: 4
 fieldset/CCIPR5:
   description: RCC kernel clock configuration register
   fields:
@@ -1628,11 +1900,21 @@ fieldset/CCIPR5:
     bit_offset: 6
     bit_size: 2
     enum: CECSEL
-  - name: FDCAN12SEL
-    description: FDCAN1 and FDCAN2 kernel clock source selection
+  - name: FDCANSEL
+    description: FDCAN1, FDCAN2 and FDCAN3 kernel clock source selection
     bit_offset: 8
     bit_size: 2
     enum: FDCANSEL
+  - name: ETHPTPCLKSEL
+    description: ETH PTP kernel clock source selection.
+    bit_offset: 10
+    bit_size: 2
+    enum: ETHPTPCLKSEL
+  - name: OCTOSPI2SEL
+    description: OCTOSPI2 kernel clock source selection.
+    bit_offset: 12
+    bit_size: 2
+    enum: OCTOSPISEL
   - name: SAI1SEL
     description: "SAI1 kernel clock source selection\r others: reserved, the kernel clock is disabled"
     bit_offset: 16
@@ -1641,6 +1923,26 @@ fieldset/CCIPR5:
   - name: SAI2SEL
     description: "SAI2 kernel clock source selection\r others: reserved, the kernel clock is disabled"
     bit_offset: 19
+    bit_size: 3
+    enum: SAISEL
+  - name: LTDCSEL
+    description: LTDC kernel source selection.
+    bit_offset: 22
+    bit_size: 1
+    enum: LTDCSEL
+  - name: ETHREFCLKSEL
+    description: ETH RMII reference kernel clock source selection.
+    bit_offset: 23
+    bit_size: 1
+    enum: ETHREFCLKSEL
+  - name: ADF1SEL
+    description: ADF1 kernel clock source selection.
+    bit_offset: 24
+    bit_size: 3
+    enum: SAISEL
+  - name: MDF1SEL
+    description: MDF1 kernel clock source selection.
+    bit_offset: 27
     bit_size: 3
     enum: SAISEL
   - name: PERSEL
@@ -1654,12 +1956,12 @@ fieldset/CFGR:
   - name: SW
     description: "system clock and trace clock switch\r Set and reset by software to select system clock and trace clock sources (sys_ck).\r Set by hardware in order to:\r -\tforce the selection of the HSI or CSI (depending on STOPWUCK selection) when leaving a system Stop mode\r -\tforce the selection of the HSI in case of failure of the HSE when used directly or indirectly as system clock\r others: reserved"
     bit_offset: 0
-    bit_size: 3
+    bit_size: 2
     enum: SW
   - name: SWS
     description: "system clock switch status\r Set and reset by hardware to indicate which clock source is used as system clock. 000: HSI used as system clock (hsi_ck) (default after reset).\r others: reserved"
     bit_offset: 3
-    bit_size: 3
+    bit_size: 2
     enum: SW
   - name: STOPWUCK
     description: "system clock selection after a wakeup from system Stop\r Set and reset by software to select the system wakeup clock from system Stop.\r The selected clock is also used as emergency clock for the clock security system (CSS) on HSE. 0: HSI selected as wakeup clock from system Stop (default after reset)\r STOPWUCK must not be modified when CSS is enabled (by HSECSSON bit) and the system clock is HSE (SWS = 10) or a switch on HSE is requested (SW =10)."
@@ -2170,6 +2472,39 @@ enum/DACHOLDSEL:
   - name: DAC_HOLD_2
     description: dac_hold_ck selected as kernel clock
     value: 1
+enum/ETHCLKSEL:
+  bit_size: 1
+  variants:
+  - name: HSE
+    description: hse_ck (default after reset).
+    value: 0
+  - name: PLL1_Q
+    description: pll1_q_ck.
+    value: 1
+enum/ETHPTPCLKSEL:
+  bit_size: 2
+  variants:
+  - name: HCLK1
+    description: rcc_hclk1 selected as kernel clock (default after reset).
+    value: 0
+  - name: PLL1_R
+    description: pll1_r_ck selected as kernel clock.
+    value: 1
+  - name: PLL1_Q
+    description: pll1_q_ck selected as kernel clock.
+    value: 2
+  - name: PLL3_P
+    description: pll3_p_ckselected as kernel clock.
+    value: 3
+enum/ETHREFCLKSEL:
+  bit_size: 1
+  variants:
+  - name: ETH_RMII_REF
+    description: ETH_RMII_REF_CLK (default after reset).
+    value: 0
+  - name: ETH_CLK_FB
+    description: eth_clk_fb.
+    value: 1
 enum/FDCANSEL:
   bit_size: 2
   variants:
@@ -2275,6 +2610,9 @@ enum/LPTIM2SEL:
   - name: PLL2_P
     description: pll2_p selected as peripheral clock
     value: 1
+  - name: PLL3_R
+    description: pll3_r_ck selected as kernel clock
+    value: 2
   - name: LSE
     description: LSE selected as peripheral clock
     value: 3
@@ -2358,6 +2696,15 @@ enum/LSEEXT:
     value: 0
   - name: Digital
     description: LSE in digital mode (do not use if RTC is active).
+    value: 1
+enum/LTDCSEL:
+  bit_size: 1
+  variants:
+  - name: PLL3_R
+    description: pll3_r_ck selected as kernel clock (default after reset).
+    value: 0
+  - name: PLL2_R
+    description: pll2_r_ck selected as kernel clock.
     value: 1
 enum/MCO1SEL:
   bit_size: 3
@@ -2470,6 +2817,57 @@ enum/OCTOSPISEL:
   - name: PER
     description: per_ck selected as kernel clock
     value: 3
+enum/OTGFSSEL:
+  bit_size: 2
+  variants:
+  - name: HSI48
+    description: hsi48_ck selected as kernel clock (default after reset).
+    value: 0
+  - name: PLL1_Q
+    description: pll1_q_ck is selected as kernel clock.
+    value: 1
+  - name: PLL3_Q
+    description: pll3_q_ck selected as kernel clock.
+    value: 2
+  - name: CLK48MOHCI
+    description: clk48mohci selected as kernel clock.
+    value: 3
+enum/OTGHSSEL:
+  bit_size: 2
+  variants:
+  - name: HSE
+    description: hse_ck selected as kernel clock (default after reset).
+    value: 0
+  - name: PLL3_Q
+    description: pll3_q_ck selected as kernel clock.
+    value: 1
+  - name: HSE_DIV_2
+    description: hse_ck / 2 selected as kernel clock.
+    value: 2
+  - name: PLL1_Q_DIV_2
+    description: pll1_q_ck / 2 selected as kernel clock.
+    value: 3
+enum/OTGPHYREFCKSEL:
+  bit_size: 4
+  variants:
+  - name: Mhz16
+    description: The kernel clock frequency is 16 MHz.
+    value: 3
+  - name: Mhz19_2
+    description: The kernel clock frequency is 19.
+    value: 8
+  - name: Mhz20
+    description: The kernel clock frequency is 20 MHz.
+    value: 9
+  - name: Mhz24
+    description: The kernel clock frequency is 24 MHz (default after reset).
+    value: 10
+  - name: Mhz32
+    description: The kernel clock frequency is 32 MHz.
+    value: 11
+  - name: Mhz26
+    description: The kernel clock frequency is 26 MHz.
+    value: 14
 enum/PERSEL:
   bit_size: 2
   variants:
@@ -4145,7 +4543,7 @@ enum/STOPWUCK:
     description: CSI selected as wakeup clock from system Stop
     value: 1
 enum/SW:
-  bit_size: 3
+  bit_size: 2
   variants:
   - name: HSI
     description: HSI selected as system clock
@@ -4231,18 +4629,3 @@ enum/USARTSEL:
   - name: LSE
     description: LSE selected as peripheral clock
     value: 5
-enum/USBSEL:
-  bit_size: 2
-  variants:
-  - name: DISABLE
-    description: Disable the kernel clock
-    value: 0
-  - name: PLL1_Q
-    description: pll1_q selected as peripheral clock
-    value: 1
-  - name: PLL3_Q
-    description: pll3_q selected as peripheral clock
-    value: 2
-  - name: HSI48
-    description: HSI48 selected as peripheral clock
-    value: 3

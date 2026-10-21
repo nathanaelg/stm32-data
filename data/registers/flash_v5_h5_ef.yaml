@@ -116,6 +116,14 @@ block/FLASH:
     description: FLASH non-secure OTP block lock
     byte_offset: 148
     fieldset: OTPBLR
+  - name: WRP12R_CUR
+    description: FLASH write sector group 2 protection for bank1.
+    byte_offset: 152
+    fieldset: WRP
+  - name: WRP12R_PRG
+    description: FLASH write sector group 2 protection for bank1.
+    byte_offset: 156
+    fieldset: WRP
   - name: SECBB1R1
     description: FLASH secure block based register for Bank 1
     byte_offset: 160
@@ -131,6 +139,22 @@ block/FLASH:
   - name: SECBB1R4
     description: FLASH secure block based register for Bank 1
     byte_offset: 172
+    fieldset: SECBB
+  - name: SECBB1R5
+    description: FLASH secure block based register for bank1.
+    byte_offset: 176
+    fieldset: SECBB
+  - name: SECBB1R6
+    description: FLASH secure block based register for bank1.
+    byte_offset: 180
+    fieldset: SECBB
+  - name: SECBB1R7
+    description: FLASH secure block based register for bank1.
+    byte_offset: 184
+    fieldset: SECBB
+  - name: SECBB1R8
+    description: FLASH secure block based register for bank1.
+    byte_offset: 188
     fieldset: SECBB
   - name: PRIVBB1R1
     description: FLASH privilege block based register for Bank 1
@@ -148,6 +172,22 @@ block/FLASH:
     description: FLASH privilege block based register for Bank 1
     byte_offset: 204
     fieldset: PRIVBB
+  - name: PRIVBB1R5
+    description: FLASH privilege block based register for bank1.
+    byte_offset: 208
+    fieldset: PRIVBB
+  - name: PRIVBB1R6
+    description: FLASH privilege block based register for bank1.
+    byte_offset: 212
+    fieldset: PRIVBB
+  - name: PRIVBB1R7
+    description: FLASH privilege block based register for bank1.
+    byte_offset: 216
+    fieldset: PRIVBB
+  - name: PRIVBB1R8
+    description: FLASH privilege block based register for bank1.
+    byte_offset: 220
+    fieldset: PRIVBB
   - name: SECWM1R_CUR
     description: FLASH security watermark for Bank 1
     byte_offset: 224
@@ -156,11 +196,11 @@ block/FLASH:
     description: FLASH security watermark for Bank 1
     byte_offset: 228
     fieldset: SECWM
-  - name: WRP1R_CUR
+  - name: WRP11R_CUR
     description: FLASH write sector group protection for Bank 1
     byte_offset: 232
     fieldset: WRP
-  - name: WRP1R_PRG
+  - name: WRP11R_PRG
     description: FLASH write sector group protection for Bank 1
     byte_offset: 236
     fieldset: WRP
@@ -192,6 +232,14 @@ block/FLASH:
     description: FLASH ECC data
     byte_offset: 264
     fieldset: ECCDR
+  - name: WRP22R_CUR
+    description: FLASH write sector group 2 protection for bank2.
+    byte_offset: 408
+    fieldset: WRP
+  - name: WRP22R_PRG
+    description: FLASH write sector group 2 protection for bank2.
+    byte_offset: 412
+    fieldset: WRP
   - name: SECBB2R1
     description: FLASH secure block-based register for Bank 2
     byte_offset: 416
@@ -207,6 +255,22 @@ block/FLASH:
   - name: SECBB2R4
     description: FLASH secure block-based register for Bank 2
     byte_offset: 428
+    fieldset: SECBB
+  - name: SECBB2R5
+    description: FLASH secure block-based register for bank2.
+    byte_offset: 432
+    fieldset: SECBB
+  - name: SECBB2R6
+    description: FLASH secure block-based register for bank2.
+    byte_offset: 436
+    fieldset: SECBB
+  - name: SECBB2R7
+    description: FLASH secure block-based register for bank2.
+    byte_offset: 440
+    fieldset: SECBB
+  - name: SECBB2R8
+    description: FLASH secure block-based register for bank2.
+    byte_offset: 444
     fieldset: SECBB
   - name: PRIVBB2R1
     description: FLASH privilege block-based register for Bank 2
@@ -224,6 +288,22 @@ block/FLASH:
     description: FLASH privilege block-based register for Bank 2
     byte_offset: 460
     fieldset: PRIVBB
+  - name: PRIVBB2R5
+    description: FLASH privilege block-based register for bank2.
+    byte_offset: 464
+    fieldset: PRIVBB
+  - name: PRIVBB2R6
+    description: FLASH privilege block-based register for bank2.
+    byte_offset: 468
+    fieldset: PRIVBB
+  - name: PRIVBB2R7
+    description: FLASH privilege block-based register for bank2.
+    byte_offset: 472
+    fieldset: PRIVBB
+  - name: PRIVBB2R8
+    description: FLASH privilege block-based register for bank2.
+    byte_offset: 476
+    fieldset: PRIVBB
   - name: SECWM2R_CUR
     description: FLASH security watermark for Bank 2
     byte_offset: 480
@@ -232,11 +312,11 @@ block/FLASH:
     description: FLASH security watermark for Bank 2
     byte_offset: 484
     fieldset: SECWM
-  - name: WRP2R_CUR
+  - name: WRP21R_CUR
     description: FLASH write sector group protection for Bank 2
     byte_offset: 488
     fieldset: WRP
-  - name: WRP2R_PRG
+  - name: WRP21R_PRG
     description: FLASH write sector group protection for Bank 2
     byte_offset: 492
     fieldset: WRP
@@ -289,7 +369,7 @@ fieldset/ECCCORR:
   - name: ADDR_ECC
     description: "ECC error address\r When an ECC error occurs (for single correction) during a read operation, the ADDR_ECC contains the address that generated the error. \r ADDR_ECC is reset when the flag error is reset. \r The flash interface programs the address in this register only when no ECC error flags are set. This means that only the first address that generated an ECC error is saved.\r The address in ADDR_ECC is relative to the flash memory area where the error occurred (user flash memory, system flash memory, data area, read-only/OTP area)."
     bit_offset: 0
-    bit_size: 16
+    bit_size: 17
   - name: OBK_ECC
     description: Single ECC error corrected in flash OB Keys storage area. It indicates the OBK storage concerned by ECC error.
     bit_offset: 20
@@ -324,7 +404,7 @@ fieldset/ECCDETR:
   - name: ADDR_ECC
     description: "ECC error address\r When an ECC error occurs (double detection) during a read operation, the ADDR_ECC contains the address that generated the error. \r ADDR_ECC is reset when the flag error is reset. \r The flash interface programs the address in this register only when no ECC error flags are set. This means that only the first address that generated an double ECC error is saved.\r The address in ADDR_ECC is relative to the flash memory area where the error occurred (user flash memory, system flash memory, data area, read-only/OTP area)."
     bit_offset: 0
-    bit_size: 16
+    bit_size: 17
   - name: OBK_ECC
     description: ECC fail double ECC error in flash OB Keys storage area. It indicates the OBK storage concerned by ECC error.
     bit_offset: 20
@@ -362,7 +442,7 @@ fieldset/EDATA1R:
   - name: EDATA1_STRT
     description: "EDATA1_STRT contains the start sectors of the flash high-cycle data area in Bank 1 There is no hardware effect to those bits. They shall be managed by ST tools in Flasher.\r ...\r Note: 111: The eight last sectors of the Bank 1 are reserved for flash high-cycle data"
     bit_offset: 0
-    bit_size: 3
+    bit_size: 4
   - name: EDATA1_EN
     description: Bank 1 flash high-cycle data enable
     bit_offset: 15
@@ -373,7 +453,7 @@ fieldset/EDATA2R:
   - name: EDATA2_STRT
     description: "EDATA2_STRT contains the start sectors of the flash high-cycle data area in Bank 2 There is no hardware effect to those bits. They shall be managed by ST tools in Flasher.\r ...\r Note: 111: The eight last sectors of the Bank 2 are reserved for flash high-cycle data."
     bit_offset: 0
-    bit_size: 3
+    bit_size: 4
   - name: EDATA2_EN
     description: Bank 2 flash high-cycle data enable
     bit_offset: 15
@@ -384,33 +464,33 @@ fieldset/HDP1R:
   - name: HDP1_STRT
     description: HDPL barrier start set in number of 8-Kbyte sectors
     bit_offset: 0
-    bit_size: 7
+    bit_size: 8
   - name: HDP1_END
     description: HDPL barrier end set in number of 8-Kbyte sectors
     bit_offset: 16
-    bit_size: 7
+    bit_size: 8
 fieldset/HDP2R:
   description: FLASH HDP Bank 2 configuration
   fields:
   - name: HDP2_STRT
     description: HDPL barrier start set in number of 8-Kbyte sectors
     bit_offset: 0
-    bit_size: 7
+    bit_size: 8
   - name: HDP2_END
     description: HDPL barrier end set in number of 8-Kbyte sectors
     bit_offset: 16
-    bit_size: 7
+    bit_size: 8
 fieldset/HDPEXTR:
   description: FLASH HDP extension register
   fields:
   - name: HDP1_EXT
     description: HDP area extension in 8�Kbytes sectors in Bank1. Extension is added after the HDP1_END sector (included).
     bit_offset: 0
-    bit_size: 7
+    bit_size: 8
   - name: HDP2_EXT
     description: HDP area extension in 8�Kbytes sectors in bank 2. Extension is added after the HDP2_END sector (included).
     bit_offset: 16
-    bit_size: 7
+    bit_size: 8
 fieldset/NSBOOTR:
   description: FLASH non-secure boot register
   fields:
@@ -469,7 +549,7 @@ fieldset/NSCR:
     description: "programming control bit\r PG can be programmed only when LOCK is cleared to 0. \r PG allows programming in Bank1 and Bank2."
     bit_offset: 1
     bit_size: 1
-  - name: PER
+  - name: SER
     description: "sector erase request\r Setting SER bit to 1 requests a sector erase. SER can be programmed only when LOCK is cleared to 0. \r If MER and SER are also set, a PGSERR is raised."
     bit_offset: 2
     bit_size: 1
@@ -485,10 +565,10 @@ fieldset/NSCR:
     description: "erase start control bit\r STRT bit is used to start a sector erase or a bank erase operation. STRT can be programmed only when LOCK is cleared to 0. \r STRT is reset at the end of the operation or when an error occurs. It cannot be reseted by software."
     bit_offset: 5
     bit_size: 1
-  - name: PNB
+  - name: SNB
     description: "sector erase selection number\r These bits are used to select the target sector for an erase operation (they are unused otherwise). SNB can be programmed only when LOCK is cleared to 0.\r .."
     bit_offset: 6
-    bit_size: 7
+    bit_size: 8
   - name: MER
     description: "Mass erase request\r Setting MER bit to 1 requests a mass erase operation (user flash memory only). MER can be programmed only when LOCK is cleared to 0. \r If BER or SER are both set, a PGSERR is raised.\r Error is triggered when a mass erase is required and some sectors are protected."
     bit_offset: 15
@@ -524,6 +604,10 @@ fieldset/NSCR:
   - name: OPTCHANGEERRIE
     description: "Option byte change error interrupt enable bit\r This bit controls if an interrupt must be generated when an error occurs during an option byte change. It can be programmed only when LOCK bit is cleared to 0."
     bit_offset: 23
+    bit_size: 1
+  - name: PUF_LAUNCH
+    description: PUF preparation start control bit.
+    bit_offset: 24
     bit_size: 1
   - name: BKSEL
     description: "Bank selector bit\r BKSEL can only be programmed when LOCK is cleared to 0. The bit selects physical bank, SWAP_BANK setting is ignored."
@@ -570,6 +654,10 @@ fieldset/NSSR:
   - name: WBNE
     description: "write buffer not empty flag \r WBNE flag is set when the flash interface is waiting for new data to complete the write buffer. In this state, the write buffer is not empty. WBNE is reset by hardware each time the write buffer is complete or the write buffer is emptied following one of the event below:\r the application software forces the write operation using FW bit in FLASH_NSCR\r the embedded flash memory detects an error that involves data loss\r This bit cannot be reset by software writing 0 directly. To reset it, clear the write buffer by performing any of the above listed actions, or send the missing data."
     bit_offset: 1
+    bit_size: 1
+  - name: PUF_STATE
+    description: PUF readiness.
+    bit_offset: 2
     bit_size: 1
   - name: DBNE
     description: "data buffer not empty flag \r DBNE flag is set when the flash interface is processing 6-bits ECC data in dedicated buffer. This bit cannot be set to 0 by software. The hardware resets it once the buffer is free."
@@ -718,7 +806,7 @@ fieldset/OPTSR:
 fieldset/OPTSR2:
   description: FLASH option status register 2
   fields:
-  - name: SRAM13_RST
+  - name: SRAM1_3_4_5_RST
     description: SRAM1 and SRAM3 erase upon system reset
     bit_offset: 2
     bit_size: 1
@@ -744,6 +832,10 @@ fieldset/OPTSR2:
   - name: USBPD_DIS
     description: USB power delivery configuration option bit
     bit_offset: 8
+    bit_size: 1
+  - name: HUK_PUF
+    description: This bit select the source of the HUK sent to the SAES.
+    bit_offset: 15
     bit_size: 1
   - name: TZEN
     description: "TrustZone enable configuration bits\r This bit enables the device is in TrustZone mode during an option byte change."
@@ -840,7 +932,7 @@ fieldset/SECCR:
     description: "programming control bit\r PG can be programmed only when LOCK is cleared to 0. \r PG allows programming in Bank1 and Bank2."
     bit_offset: 1
     bit_size: 1
-  - name: PER
+  - name: SER
     description: "sector erase request\r Setting SER bit to 1 requests a sector erase. SER can be programmed only when LOCK is cleared to 0. \r If BER and MER are also set, a PGSERR is raised."
     bit_offset: 2
     bit_size: 1
@@ -856,10 +948,10 @@ fieldset/SECCR:
     description: "erase start control bit\r STRT bit is used to start a sector erase or a bank erase operation. STRT can be programmed only when LOCK is cleared to 0. \r STRT is reseted at the end of the operation or when an error occurs. It cannot be reset by software."
     bit_offset: 5
     bit_size: 1
-  - name: PNB
+  - name: SNB
     description: "sector erase selection number\r These bits are used to select the target sector for an erase operation (they are unused otherwise). SNB can be programmed only when LOCK is cleared to 0.\r .."
     bit_offset: 6
-    bit_size: 7
+    bit_size: 8
   - name: MER
     description: "mass erase request\r Setting MER bit to 1 requests a mass erase operation (user flash memory only). MER can be programmed only when LOCK is cleared to 0. \r If BER or SER are also set, a PGSERR is raised.\r Error is triggered when a mass erase is required and some sectors are protected."
     bit_offset: 15
@@ -891,6 +983,10 @@ fieldset/SECCR:
   - name: OBKWERRIE
     description: "OBK write error interrupt enable bit\r OBKWERRIE enables generation of interrupt in case of OBK specific write error. OBKWERRIE can be programmed only when LOCK is cleared to 0."
     bit_offset: 22
+    bit_size: 1
+  - name: PUF_LAUNCH
+    description: PUF preparation start control bit.
+    bit_offset: 24
     bit_size: 1
   - name: INV
     description: "Flash memory security state invert.\r This bit inverts the flash memory security state."
@@ -942,6 +1038,10 @@ fieldset/SECSR:
     description: "write buffer not empty flag \r WBNE flag is set when the flash interface is waiting for new data to complete the write buffer. In this state, the write buffer is not empty. WBNE is reset by hardware each time the write buffer is complete or the write buffer is emptied following one of the event below:\r the application software forces the write operation using FW bit in FLASH_SECCR\r the flash interface detects an error that involves data loss\r This bit cannot be reset by writing 0 directly by software. To reset it, clear the write buffer by performing any of the above listed actions, or send the missing data."
     bit_offset: 1
     bit_size: 1
+  - name: PUF_STATE
+    description: PUF readiness.
+    bit_offset: 2
+    bit_size: 1
   - name: DBNE
     description: "data buffer not empty flag \r DBNE flag is set when the embedded flash memory interface is processing 6-bits ECC data in dedicated buffer. This bit cannot be set to 0 by software. The hardware resets it once the buffer is free."
     bit_offset: 3
@@ -980,11 +1080,11 @@ fieldset/SECWM:
   - name: SECWMSTRT
     description: Bank2 security WM area start sector
     bit_offset: 0
-    bit_size: 7
+    bit_size: 8
   - name: SECWMEND
     description: Bank2 security WM end sector
     bit_offset: 16
-    bit_size: 7
+    bit_size: 8
 fieldset/WRP:
   description: FLASH write sector group protection for Bank 1
   fields:

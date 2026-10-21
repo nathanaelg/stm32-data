@@ -97,7 +97,7 @@ fieldset/ATCR1:
   - name: ATCKSEL
     description: Active tamper RTC asynchronous prescaler clock selection These bits selects the RTC asynchronous prescaler stage output.The selected clock is CK_ATPRE. fCK_ATPRE = fRTCCLK / 2ATCKSEL when (PREDIV_A+1) = 128. ... These bits can be written only when all active tampers are disabled. The write protection remains for up to 1.5 ck_atpre cycles after all the active tampers are disable.
     bit_offset: 16
-    bit_size: 3
+    bit_size: 4
   - name: ATPER
     description: Active tamper output change period The tamper output is changed every CK_ATPER = (2ATPER x CK_ATPRE) cycles. Refer to.
     bit_offset: 24

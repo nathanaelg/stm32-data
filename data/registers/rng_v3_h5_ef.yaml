@@ -13,10 +13,26 @@ block/RNG:
     description: data register
     byte_offset: 8
     access: Read
+  - name: NSCR
+    description: RNG noise source control register.
+    byte_offset: 12
+    fieldset: NSCR
   - name: HTCR
     description: health test control register
     byte_offset: 16
     fieldset: HTCR
+  - name: HTCR1
+    description: RNG health test control register 1.
+    byte_offset: 20
+    fieldset: HTCR1
+  - name: HTCR2
+    description: RNG health test control register 2.
+    byte_offset: 24
+    fieldset: HTCR2
+  - name: HTCR3
+    description: RNG health test control register 3.
+    byte_offset: 28
+    fieldset: HTCR3
 fieldset/CR:
   description: control register
   fields:
@@ -59,7 +75,7 @@ fieldset/CR:
   - name: RNG_CONFIG1
     description: RNG configuration 1
     bit_offset: 20
-    bit_size: 6
+    bit_size: 8
     enum: RNG_CONFIG1
   - name: CONDRST
     description: Conditioning soft reset
@@ -77,6 +93,42 @@ fieldset/HTCR:
     bit_offset: 0
     bit_size: 32
     enum: HTCFG
+fieldset/HTCR1:
+  description: RNG health test control register 1.
+  fields:
+  - name: HTCFG
+    description: health test configuration.
+    bit_offset: 0
+    bit_size: 32
+fieldset/HTCR2:
+  description: RNG health test control register 2.
+  fields:
+  - name: HTCFG
+    description: health test configuration.
+    bit_offset: 0
+    bit_size: 32
+fieldset/HTCR3:
+  description: RNG health test control register 3.
+  fields:
+  - name: HTCFG
+    description: health test configuration.
+    bit_offset: 0
+    bit_size: 32
+fieldset/NSCR:
+  description: RNG noise source control register.
+  fields:
+  - name: EN_OSC1
+    description: Each bit drives one oscillator enable signal input of instance number 1, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+    bit_offset: 0
+    bit_size: 3
+  - name: EN_OSC2
+    description: Each bit drives one oscillator enable signal input of instance number 2, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+    bit_offset: 3
+    bit_size: 3
+  - name: EN_OSC3
+    description: Each bit drives one oscillator enable signal input of instance number 3, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+    bit_offset: 6
+    bit_size: 3
 fieldset/SR:
   description: status register
   fields:
@@ -91,6 +143,10 @@ fieldset/SR:
   - name: SECS
     description: Seed error current status
     bit_offset: 2
+    bit_size: 1
+  - name: BUSY
+    description: Busy.
+    bit_offset: 4
     bit_size: 1
   - name: CEIS
     description: Clock error interrupt status
@@ -170,7 +226,7 @@ enum/NISTC:
     description: Custom values for NIST compliant RNG
     value: 1
 enum/RNG_CONFIG1:
-  bit_size: 6
+  bit_size: 8
   variants:
   - name: ConfigA
     description: Recommended value for config A (NIST certifiable)

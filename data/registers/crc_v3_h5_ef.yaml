@@ -45,8 +45,15 @@ fieldset/CR:
   - name: REV_OUT
     description: Reverse output data
     bit_offset: 7
+    bit_size: 2
+  - name: RTYPE_IN
+    description: Reverse type input.
+    bit_offset: 9
     bit_size: 1
-    enum: REV_OUT
+  - name: RTYPE_OUT
+    description: Reverse type output.
+    bit_offset: 10
+    bit_size: 1
 enum/POLYSIZE:
   bit_size: 2
   variants:
@@ -77,12 +84,3 @@ enum/REV_IN:
   - name: Word
     description: Bit reversal done by word
     value: 3
-enum/REV_OUT:
-  bit_size: 1
-  variants:
-  - name: Normal
-    description: Bit order not affected
-    value: 0
-  - name: Reversed
-    description: Bit reversed output
-    value: 1

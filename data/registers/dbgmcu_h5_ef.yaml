@@ -29,6 +29,10 @@ block/DBGMCU:
     description: DBGMCU AHB1 peripheral freeze register.
     byte_offset: 32
     fieldset: AHB1FZR
+  - name: EDBGRQ
+    description: DBGMCU EDBGRQ debug request control.
+    byte_offset: 128
+    fieldset: EDBGRQ
   - name: SR
     description: DBGMCU status register.
     byte_offset: 252
@@ -87,14 +91,14 @@ fieldset/AHB1FZR:
     bit_offset: 0
     bit_size: 1
     array:
-      len: 16
+      len: 12
       stride: 1
   - name: GPDMA2_STOP
     description: GPDMA2 channel 0 stop in debug.
     bit_offset: 16
     bit_size: 1
     array:
-      len: 16
+      len: 12
       stride: 1
 fieldset/APB1HFZR:
   description: DBGMCU APB1H peripheral freeze register.
@@ -196,6 +200,10 @@ fieldset/APB3FZR:
     description: I2C4 SMBUS timeout stop in debug.
     bit_offset: 11
     bit_size: 1
+  - name: I3C2_STOP
+    description: I3C2 SCL stall counter stop in debug.
+    bit_offset: 12
+    bit_size: 1
   - name: LPTIM1_STOP
     description: LPTIM1 stop in debug.
     bit_offset: 17
@@ -289,6 +297,13 @@ fieldset/CR:
   - name: DCRT
     description: Debug credentials reset type This bit selects which type of reset is used to revoke the debug authentication credentials.
     bit_offset: 16
+    bit_size: 1
+fieldset/EDBGRQ:
+  description: DBGMCU EDBGRQ debug request control.
+  fields:
+  - name: CPU
+    description: drives the CPU external debug request (EDBGRQ) signal.
+    bit_offset: 0
     bit_size: 1
 fieldset/IDCODE:
   description: DBGMCU identity code register.

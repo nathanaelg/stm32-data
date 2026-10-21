@@ -104,7 +104,7 @@ block/ETHERNET_DMA:
     fieldset: DMACSR
   - name: DMACMFCR
     description: Channel missed frame count register
-    byte_offset: 364
+    byte_offset: 356
     access: Read
     fieldset: DMACMFCR
 block/ETHERNET_MAC:
@@ -205,6 +205,10 @@ block/ETHERNET_MAC:
     byte_offset: 276
     access: Read
     fieldset: MACDR
+  - name: MACHWF0R
+    description: HW feature 0 register.
+    byte_offset: 284
+    fieldset: MACHWF0R
   - name: MACHWF1R
     description: HW feature 1 register
     byte_offset: 288
@@ -215,6 +219,10 @@ block/ETHERNET_MAC:
     byte_offset: 292
     access: Read
     fieldset: MACHWF2R
+  - name: MACHWF3R
+    description: HW feature 3 register.
+    byte_offset: 296
+    fieldset: MACHWF3R
   - name: MACMDIOAR
     description: MDIO address register
     byte_offset: 512
@@ -223,6 +231,26 @@ block/ETHERNET_MAC:
     description: MDIO data register
     byte_offset: 516
     fieldset: MACMDIODR
+  - name: MACARPAR
+    description: ARP address register
+    byte_offset: 528
+    fieldset: MACARPAR
+  - name: MACCSRSWCR
+    description: CSR software control register.
+    byte_offset: 560
+    fieldset: MACCSRSWCR
+  - name: MACFPECSR
+    description: FPE control and status register.
+    byte_offset: 564
+    fieldset: MACFPECSR
+  - name: MACPRSTIMR
+    description: MAC presentation time register.
+    byte_offset: 576
+    fieldset: MACPRSTIMR
+  - name: MACPRSTIMUR
+    description: MAC presentation time update register.
+    byte_offset: 580
+    fieldset: MACPRSTIMUR
   - name: MACA0HR
     description: Address 0 high register
     byte_offset: 768
@@ -317,6 +345,46 @@ block/ETHERNET_MAC:
     byte_offset: 2040
     access: Read
     fieldset: RX_LPI_TRAN_CNTR
+  - name: MMC_FPE_TX_ISR
+    description: MMC FPE Tx interrupt status register.
+    byte_offset: 2208
+    fieldset: MMC_FPE_TX_ISR
+  - name: MMC_FPE_TX_IMR
+    description: MMC FPE Tx interrupt mask register.
+    byte_offset: 2212
+    fieldset: MMC_FPE_TX_IMR
+  - name: MMC_FPE_TX_FCR
+    description: MMC FPE Tx fragment counter register.
+    byte_offset: 2216
+    fieldset: MMC_FPE_TX_FCR
+  - name: MMC_TX_HRCR
+    description: MMC Tx hold request counter register.
+    byte_offset: 2220
+    fieldset: MMC_TX_HRCR
+  - name: MMC_FPE_RX_ISR
+    description: MMC FPE Rx interrupt status register.
+    byte_offset: 2240
+    fieldset: MMC_FPE_RX_ISR
+  - name: MMC_FPE_RX_IMR
+    description: MMC FPE Rx interrupt mask register.
+    byte_offset: 2244
+    fieldset: MMC_FPE_RX_IMR
+  - name: RX_PACKET_ASM_ERR
+    description: MMC Rx packet assembly error register.
+    byte_offset: 2248
+    fieldset: RX_PACKET_ASM_ERR
+  - name: RX_PACKET_SMD_ERR
+    description: MMC Rx packet SMD error register.
+    byte_offset: 2252
+    fieldset: RX_PACKET_SMD_ERR
+  - name: RX_PACKET_ASM_OKR
+    description: MMC Rx packet assembly OK register.
+    byte_offset: 2256
+    fieldset: RX_PACKET_ASM_OKR
+  - name: RX_FPE_FRAG_CR
+    description: MMC Rx FPE fragments counter register.
+    byte_offset: 2260
+    fieldset: RX_FPE_FRAG_CR
   - name: MACL3L4C0R
     description: L3 and L4 control 0 register
     byte_offset: 2304
@@ -365,10 +433,14 @@ block/ETHERNET_MAC:
     description: Layer3 address 3 filter 1 register
     byte_offset: 2380
     fieldset: MACL3A31R
-  - name: MACARPAR
-    description: ARP address register
-    byte_offset: 2784
-    fieldset: MACARPAR
+  - name: MAC_IACR
+    description: MAC Indirect Access Control register.
+    byte_offset: 2672
+    fieldset: MAC_IACR
+  - name: MAC_TMRQR
+    description: MAC type-based Rx Queue mapping register.
+    byte_offset: 2676
+    fieldset: MAC_TMRQR
   - name: MACTSCR
     description: Timestamp control Register
     byte_offset: 2816
@@ -404,6 +476,14 @@ block/ETHERNET_MAC:
     byte_offset: 2848
     access: Read
     fieldset: MACTSSR
+  - name: MACRXDTI
+    description: Rx domain time increment register.
+    byte_offset: 2852
+    fieldset: MACRXDTI
+  - name: MACTXDTI
+    description: Tx domain time increment register.
+    byte_offset: 2856
+    fieldset: MACTXDTI
   - name: MACTxTSSNR
     description: Tx timestamp status nanoseconds register
     byte_offset: 2864
@@ -444,6 +524,14 @@ block/ETHERNET_MAC:
     description: Timestamp Egress correction nanosecond register
     byte_offset: 2908
     fieldset: MACTSECNR
+  - name: MACTSILR
+    description: Timestamp Ingress Latency register.
+    byte_offset: 2920
+    fieldset: MACTSILR
+  - name: MACTSELR
+    description: Timestamp Egress Latency register.
+    byte_offset: 2924
+    fieldset: MACTSELR
   - name: MACPPSCR
     description: PPS control register
     byte_offset: 2928
@@ -571,6 +659,10 @@ fieldset/DMACCR:
     description: Descriptor Skip Length
     bit_offset: 18
     bit_size: 3
+  - name: DRO
+    description: Descriptor refetch when OWN bit is 0.
+    bit_offset: 26
+    bit_size: 1
 fieldset/DMACIER:
   description: Channel interrupt enable register
   fields:
@@ -677,6 +769,26 @@ fieldset/DMACRxIWTR:
     description: Receive Interrupt Watchdog Timer Count
     bit_offset: 0
     bit_size: 8
+  - name: ITW
+    description: Rx Idle Timer Window.
+    bit_offset: 8
+    bit_size: 5
+  - name: RWTU
+    description: Receive Interrupt Watchdog Timer Count Units.
+    bit_offset: 16
+    bit_size: 2
+  - name: ITCU
+    description: Rx Idle Timer Count Units.
+    bit_offset: 18
+    bit_size: 2
+  - name: RBCT
+    description: Receive Byte Count Threshold.
+    bit_offset: 20
+    bit_size: 10
+  - name: PSEL
+    description: Packet Count Interrupt Select.
+    bit_offset: 31
+    bit_size: 1
 fieldset/DMACRxRLR:
   description: Channel Rx descriptor ring length register
   fields:
@@ -684,6 +796,10 @@ fieldset/DMACRxRLR:
     description: Receive Descriptor Ring Length
     bit_offset: 0
     bit_size: 10
+  - name: ARBS
+    description: Alternate Receive Buffer Size.
+    bit_offset: 16
+    bit_size: 8
 fieldset/DMACSR:
   description: Channel status register
   fields:
@@ -1040,6 +1156,17 @@ fieldset/MACCR:
     description: ARP Offload Enable
     bit_offset: 31
     bit_size: 1
+fieldset/MACCSRSWCR:
+  description: CSR software control register.
+  fields:
+  - name: RCWE
+    description: Register Clear on Write 1 Enable.
+    bit_offset: 0
+    bit_size: 1
+  - name: SEEN
+    description: Slave Error Response Enable.
+    bit_offset: 8
+    bit_size: 1
 fieldset/MACDR:
   description: Debug register
   fields:
@@ -1086,6 +1213,45 @@ fieldset/MACECR:
     description: Extended Inter-Packet Gap
     bit_offset: 25
     bit_size: 5
+  - name: APDIM
+    description: ARP Packet Drop if IP Address Mismatch.
+    bit_offset: 30
+    bit_size: 1
+fieldset/MACFPECSR:
+  description: FPE control and status register.
+  fields:
+  - name: EFPE
+    description: Enable Tx Frame Preemption.
+    bit_offset: 0
+    bit_size: 1
+  - name: SVER
+    description: Send Verify mPacket.
+    bit_offset: 1
+    bit_size: 1
+  - name: SRSP
+    description: Send Respond mPacket.
+    bit_offset: 2
+    bit_size: 1
+  - name: ARV
+    description: Autogenerate Respond mPacket on receiving Verify mPacket.
+    bit_offset: 3
+    bit_size: 1
+  - name: RVER
+    description: Received Verify Frame.
+    bit_offset: 16
+    bit_size: 1
+  - name: RRSP
+    description: Received Respond Frame.
+    bit_offset: 17
+    bit_size: 1
+  - name: TVER
+    description: Transmitted Verify Frame.
+    bit_offset: 18
+    bit_size: 1
+  - name: TRSP
+    description: Transmitted Respond Frame.
+    bit_offset: 19
+    bit_size: 1
 fieldset/MACHTR:
   description: Hash Table 0/1 register
   fields:
@@ -1093,6 +1259,89 @@ fieldset/MACHTR:
     description: MAC Hash Table 32 Bits
     bit_offset: 0
     bit_size: 32
+fieldset/MACHWF0R:
+  description: HW feature 0 register.
+  fields:
+  - name: MIISEL
+    description: 10 or 100 Mbps Support.
+    bit_offset: 0
+    bit_size: 1
+  - name: GMIISEL
+    description: 1000 Mbps Support.
+    bit_offset: 1
+    bit_size: 1
+  - name: HDSEL
+    description: Half-duplex Support.
+    bit_offset: 2
+    bit_size: 1
+  - name: PCSSEL
+    description: PCS Registers (TBI, SGMII, or RTBI PHY interface).
+    bit_offset: 3
+    bit_size: 1
+  - name: VLHASH
+    description: VLAN Hash Filter Selected.
+    bit_offset: 4
+    bit_size: 1
+  - name: SMASEL
+    description: SMA (MDIO) Interface.
+    bit_offset: 5
+    bit_size: 1
+  - name: RWKSEL
+    description: PMT Remote Wake-up Packet Enable.
+    bit_offset: 6
+    bit_size: 1
+  - name: MGKSEL
+    description: PMT Magic Packet Enable.
+    bit_offset: 7
+    bit_size: 1
+  - name: MMCSEL
+    description: RMON Module Enable.
+    bit_offset: 8
+    bit_size: 1
+  - name: ARPOFFSEL
+    description: ARP Offload Enabled.
+    bit_offset: 9
+    bit_size: 1
+  - name: TSSEL
+    description: IEEE 1588-2008 Timestamp Enabled.
+    bit_offset: 12
+    bit_size: 1
+  - name: EEESEL
+    description: Energy Efficient Ethernet Enabled.
+    bit_offset: 13
+    bit_size: 1
+  - name: TXCOESEL
+    description: Transmit Checksum Offload Enabled.
+    bit_offset: 14
+    bit_size: 1
+  - name: RXCOESEL
+    description: Receive Checksum Offload Enabled.
+    bit_offset: 16
+    bit_size: 1
+  - name: ADDMACADRSEL
+    description: MAC Addresses 1-31 Selected.
+    bit_offset: 18
+    bit_size: 5
+  - name: MACADR32SEL
+    description: MAC Addresses 32-63 Selected.
+    bit_offset: 23
+    bit_size: 1
+  - name: MACADR64SEL
+    description: MAC Addresses 64-127 Selected.
+    bit_offset: 24
+    bit_size: 1
+  - name: TSSTSSEL
+    description: Timestamp System Time Source.
+    bit_offset: 25
+    bit_size: 2
+  - name: SAVLANINS
+    description: Source Address or VLAN Insertion Enable.
+    bit_offset: 27
+    bit_size: 1
+  - name: ACTPHYSEL
+    description: Active PHY Selected.
+    bit_offset: 28
+    bit_size: 3
 fieldset/MACHWF1R:
   description: HW feature 1 register
   fields:
@@ -1100,6 +1349,10 @@ fieldset/MACHWF1R:
     description: MTL Receive FIFO Size
     bit_offset: 0
     bit_size: 5
+  - name: SPRAM
+    description: Single Port RAM Enable.
+    bit_offset: 5
+    bit_size: 1
   - name: TXFIFOSIZE
     description: MTL Transmit FIFO Size
     bit_offset: 6
@@ -1140,6 +1393,14 @@ fieldset/MACHWF1R:
     description: AV Feature Enable
     bit_offset: 20
     bit_size: 1
+  - name: RAVSEL
+    description: Rx Side Only AV Feature Enable.
+    bit_offset: 21
+    bit_size: 1
+  - name: POUOST
+    description: One Step for PTP over UDP/IP Feature Enable.
+    bit_offset: 23
+    bit_size: 1
   - name: HASHTBLSZ
     description: Hash Table Size
     bit_offset: 24
@@ -1163,10 +1424,18 @@ fieldset/MACHWF2R:
     description: Number of DMA Receive Channels
     bit_offset: 12
     bit_size: 4
+  - name: RDCSZ
+    description: Rx DMA Descriptor Cache Size in terms of 16-byte descriptors.
+    bit_offset: 16
+    bit_size: 2
   - name: TXCHCNT
     description: Number of DMA Transmit Channels
     bit_offset: 18
     bit_size: 4
+  - name: TDCSZ
+    description: Tx DMA Descriptor Cache Size in terms of 16-byte descriptors.
+    bit_offset: 22
+    bit_size: 2
   - name: PPSOUTNUM
     description: Number of PPS Outputs
     bit_offset: 24
@@ -1175,6 +1444,61 @@ fieldset/MACHWF2R:
     description: Number of Auxiliary Snapshot Inputs
     bit_offset: 28
     bit_size: 3
+fieldset/MACHWF3R:
+  description: HW feature 3 register.
+  fields:
+  - name: NRVF
+    description: Number of Extended VLAN Tag Filters Enabled.
+    bit_offset: 0
+    bit_size: 3
+  - name: CBTISEL
+    description: Queue/Channel based VLAN tag insertion on Tx enable.
+    bit_offset: 4
+    bit_size: 1
+  - name: DVLAN
+    description: Double VLAN processing enable.
+    bit_offset: 5
+    bit_size: 1
+  - name: PDUPSEL
+    description: Broadcast/Multicast Packet Duplication.
+    bit_offset: 9
+    bit_size: 1
+  - name: FRPSEL
+    description: Flexible Receive Parser Selected.
+    bit_offset: 10
+    bit_size: 1
+  - name: FRPBS
+    description: Flexible Receive Parser Buffer size.
+    bit_offset: 11
+    bit_size: 2
+  - name: FRPES
+    description: Flexible Receive Parser Table Entries size.
+    bit_offset: 13
+    bit_size: 2
+  - name: ESTSEL
+    description: Enhancements to Scheduled Traffic Enable.
+    bit_offset: 16
+    bit_size: 1
+  - name: ESTDEP
+    description: Depth of the Gate Control List.
+    bit_offset: 17
+    bit_size: 3
+  - name: ESTWID
+    description: Width of the Time Interval field in the Gate Control List.
+    bit_offset: 20
+    bit_size: 2
+  - name: FPESEL
+    description: Frame Preemption Enable.
+    bit_offset: 26
+    bit_size: 1
+  - name: TBSSEL
+    description: Time-based scheduling Enable.
+    bit_offset: 27
+    bit_size: 1
+  - name: ASP
+    description: Automotive Safety Package.
+    bit_offset: 28
+    bit_size: 2
 fieldset/MACIER:
   description: Interrupt enable register
   fields:
@@ -1201,6 +1525,14 @@ fieldset/MACIER:
   - name: RXSTSIE
     description: Receive Status Interrupt Enable
     bit_offset: 14
+    bit_size: 1
+  - name: FPEIE
+    description: Frame Preemption Interrupt Enable.
+    bit_offset: 17
+    bit_size: 1
+  - name: MDIOIE
+    description: MDIO Interrupt Enable.
+    bit_offset: 18
     bit_size: 1
 fieldset/MACISR:
   description: Interrupt status register
@@ -1240,6 +1572,22 @@ fieldset/MACISR:
   - name: RXSTSIS
     description: Receive Status Interrupt
     bit_offset: 14
+    bit_size: 1
+  - name: FPEIS
+    description: Frame Preemption Interrupt Status.
+    bit_offset: 17
+    bit_size: 1
+  - name: MDIOIS
+    description: MDIO Interrupt Status.
+    bit_offset: 18
+    bit_size: 1
+  - name: MFTIS
+    description: MMC FPE Transmit Interrupt Status.
+    bit_offset: 19
+    bit_size: 1
+  - name: MFRIS
+    description: MMC FPE Receive Interrupt Status.
+    bit_offset: 20
     bit_size: 1
 fieldset/MACIVIR:
   description: Inner VLAN inclusion register
@@ -1491,13 +1839,17 @@ fieldset/MACLCSR:
     description: LPI Timer Enable
     bit_offset: 20
     bit_size: 1
+  - name: LPITCSE
+    description: LPI Tx Clock Stop Enable.
+    bit_offset: 21
+    bit_size: 1
 fieldset/MACLETR:
   description: LPI entry timer register
   fields:
   - name: LPIET
     description: LPI Entry Timer
-    bit_offset: 3
-    bit_size: 17
+    bit_offset: 0
+    bit_size: 20
 fieldset/MACLMIR:
   description: Log message interval register
   fields:
@@ -1703,6 +2055,10 @@ fieldset/MACPOCR:
     description: Disable PTO Delay Request/Response response generation
     bit_offset: 6
     bit_size: 1
+  - name: PDRDIS
+    description: Disable Peer Delay Response response generation.
+    bit_offset: 7
+    bit_size: 1
   - name: DN
     description: Domain Number
     bit_offset: 8
@@ -1722,6 +2078,14 @@ fieldset/MACPPSCR:
     description: Target Time Register Mode for PPS Output
     bit_offset: 5
     bit_size: 2
+  - name: MCGREN0
+    description: MCGR Mode Enable for PPS0 Output.
+    bit_offset: 7
+    bit_size: 1
+  - name: TIMESEL
+    description: Time Select.
+    bit_offset: 28
+    bit_size: 1
 fieldset/MACPPSIR:
   description: PPS interval register
   fields:
@@ -1746,12 +2110,26 @@ fieldset/MACPPSTTSR:
   - name: TSTRH0
     description: PPS Target Time Seconds Register
     bit_offset: 0
-    bit_size: 31
+    bit_size: 32
 fieldset/MACPPSWR:
   description: PPS width register
   fields:
   - name: PPSWIDTH0
     description: PPS Output Signal Width
+    bit_offset: 0
+    bit_size: 32
+fieldset/MACPRSTIMR:
+  description: MAC presentation time register.
+  fields:
+  - name: MPTN
+    description: MAC 1722 Presentation Time in ns.
+    bit_offset: 0
+    bit_size: 32
+fieldset/MACPRSTIMUR:
+  description: MAC presentation time update register.
+  fields:
+  - name: MPTU
+    description: MAC 1722 Presentation Time Update.
     bit_offset: 0
     bit_size: 32
 fieldset/MACQTxFCR:
@@ -1784,6 +2162,13 @@ fieldset/MACRWKPFR:
     description: Remote wakeup packet filter
     bit_offset: 0
     bit_size: 32
+fieldset/MACRXDTI:
+  description: Rx domain time increment register.
+  fields:
+  - name: RXNS
+    description: Receive domain time increment value in nanoseconds.
+    bit_offset: 16
+    bit_size: 16
 fieldset/MACRxFCR:
   description: Rx flow control register
   fields:
@@ -1920,6 +2305,10 @@ fieldset/MACTSCR:
     description: Update Addend Register
     bit_offset: 5
     bit_size: 1
+  - name: PTGE
+    description: Presentation Time Generation Enable.
+    bit_offset: 6
+    bit_size: 1
   - name: TSENALL
     description: Enable Timestamp for All Packets
     bit_offset: 8
@@ -1968,6 +2357,22 @@ fieldset/MACTSCR:
     description: Transmit Timestamp Status Mode
     bit_offset: 24
     bit_size: 1
+  - name: EPCSL
+    description: Enable PCS latencies.
+    bit_offset: 25
+    bit_size: 1
+  - name: ECPD
+    description: Enable Timestamp Capturing in PTP Clock Domain.
+    bit_offset: 26
+    bit_size: 1
+  - name: LITA
+    description: Latency Input Based Timestamp Accuracy Disable.
+    bit_offset: 27
+    bit_size: 1
+  - name: AV8021ASMEN
+    description: AV 802.
+    bit_offset: 28
+    bit_size: 1
 fieldset/MACTSEACR:
   description: Timestamp Egress asymmetric correction register
   fields:
@@ -1982,6 +2387,17 @@ fieldset/MACTSECNR:
     description: Timestamp Egress Correction
     bit_offset: 0
     bit_size: 32
+fieldset/MACTSELR:
+  description: Timestamp Egress Latency register.
+  fields:
+  - name: ETLSNS
+    description: Egress Timestamp Latency, in subnanoseconds.
+    bit_offset: 8
+    bit_size: 8
+  - name: ETLNS
+    description: Egress Timestamp Latency, in nanoseconds.
+    bit_offset: 16
+    bit_size: 12
 fieldset/MACTSIACR:
   description: Timestamp Ingress asymmetric correction register
   fields:
@@ -1996,6 +2412,17 @@ fieldset/MACTSICNR:
     description: Timestamp Ingress Correction
     bit_offset: 0
     bit_size: 32
+fieldset/MACTSILR:
+  description: Timestamp Ingress Latency register.
+  fields:
+  - name: ITLSNS
+    description: Ingress Timestamp Latency, in subnanoseconds.
+    bit_offset: 8
+    bit_size: 8
+  - name: ITLNS
+    description: Ingress Timestamp Latency, in nanoseconds.
+    bit_offset: 16
+    bit_size: 12
 fieldset/MACTSSR:
   description: Timestamp status register
   fields:
@@ -2031,6 +2458,13 @@ fieldset/MACTSSR:
     description: Number of Auxiliary Timestamp Snapshots
     bit_offset: 25
     bit_size: 5
+fieldset/MACTXDTI:
+  description: Tx domain time increment register.
+  fields:
+  - name: TXNS
+    description: Transmit domain time increment value in nanoseconds.
+    bit_offset: 16
+    bit_size: 16
 fieldset/MACTxTSSNR:
   description: Tx timestamp status nanoseconds register
   fields:
@@ -2156,6 +2590,52 @@ fieldset/MACWTR:
     description: Programmable Watchdog Enable
     bit_offset: 8
     bit_size: 1
+  - name: JTO
+    description: Jabber Timeout.
+    bit_offset: 16
+    bit_size: 4
+  - name: PJE
+    description: Programmable Jabber Enable.
+    bit_offset: 24
+    bit_size: 1
+fieldset/MAC_IACR:
+  description: MAC Indirect Access Control register.
+  fields:
+  - name: OB
+    description: Operation Busy.
+    bit_offset: 0
+    bit_size: 1
+  - name: COM
+    description: Command type.
+    bit_offset: 1
+    bit_size: 1
+  - name: AUTO
+    description: Auto-increment.
+    bit_offset: 5
+    bit_size: 1
+  - name: AOFF
+    description: Address Offset.
+    bit_offset: 8
+    bit_size: 8
+  - name: MSEL
+    description: Mode Select.
+    bit_offset: 16
+    bit_size: 4
+fieldset/MAC_TMRQR:
+  description: MAC type-based Rx Queue mapping register.
+  fields:
+  - name: TYP
+    description: Type field Value.
+    bit_offset: 0
+    bit_size: 16
+  - name: TMRQ
+    description: Type Match Rx Queue Number.
+    bit_offset: 16
+    bit_size: 3
+  - name: PFEX
+    description: Preemption or Express Packet.
+    bit_offset: 20
+    bit_size: 1
 fieldset/MMC_CONTROL:
   description: MMC control register
   fields:
@@ -2186,6 +2666,73 @@ fieldset/MMC_CONTROL:
   - name: UCDBC
     description: Update MMC Counters for Dropped Broadcast Packets
     bit_offset: 8
+    bit_size: 1
+fieldset/MMC_FPE_RX_IMR:
+  description: MMC FPE Rx interrupt mask register.
+  fields:
+  - name: PAECIM
+    description: MMC Rx Packet Assembly Error Counter Interrupt Mask.
+    bit_offset: 0
+    bit_size: 1
+  - name: PSECIM
+    description: MMC Rx Packet SMD Error Counter Interrupt Mask.
+    bit_offset: 1
+    bit_size: 1
+  - name: PAOCIM
+    description: MMC Rx Packet Assembly OK Counter Interrupt Mask.
+    bit_offset: 2
+    bit_size: 1
+  - name: FCIM
+    description: MMC Rx FPE Fragment Counter Interrupt Mask.
+    bit_offset: 3
+    bit_size: 1
+fieldset/MMC_FPE_RX_ISR:
+  description: MMC FPE Rx interrupt status register.
+  fields:
+  - name: PAECIS
+    description: MMC Rx Packet Assembly Error Counter Interrupt Status.
+    bit_offset: 0
+    bit_size: 1
+  - name: PSECIS
+    description: MMC Rx Packet SMD Error Counter Interrupt Status.
+    bit_offset: 1
+    bit_size: 1
+  - name: PAOCIS
+    description: MMC Rx Packet Assembly OK Counter Interrupt Status.
+    bit_offset: 2
+    bit_size: 1
+  - name: FCIS
+    description: MMC Rx FPE Fragment Counter Interrupt Status.
+    bit_offset: 3
+    bit_size: 1
+fieldset/MMC_FPE_TX_FCR:
+  description: MMC FPE Tx fragment counter register.
+  fields:
+  - name: TXFFC
+    description: Tx FPE Fragment counter.
+    bit_offset: 0
+    bit_size: 32
+fieldset/MMC_FPE_TX_IMR:
+  description: MMC FPE Tx interrupt mask register.
+  fields:
+  - name: FCIM
+    description: MMC Transmit Fragment Counter Interrupt Mask.
+    bit_offset: 0
+    bit_size: 1
+  - name: HRCIM
+    description: MMC Transmit Hold Request Counter Interrupt Mask.
+    bit_offset: 1
+    bit_size: 1
+fieldset/MMC_FPE_TX_ISR:
+  description: MMC FPE Tx interrupt status register.
+  fields:
+  - name: FCIS
+    description: MMC Tx FPE Fragment Counter Interrupt status.
+    bit_offset: 0
+    bit_size: 1
+  - name: HRCIS
+    description: MMC Tx Hold Request Counter Interrupt Status.
+    bit_offset: 1
     bit_size: 1
 fieldset/MMC_RX_INTERRUPT:
   description: MMC Rx interrupt register
@@ -2233,6 +2780,13 @@ fieldset/MMC_RX_INTERRUPT_MASK:
     description: MMC Receive LPI transition counter interrupt Mask
     bit_offset: 27
     bit_size: 1
+fieldset/MMC_TX_HRCR:
+  description: MMC Tx hold request counter register.
+  fields:
+  - name: TXHRC
+    description: Tx Hold Request Counter.
+    bit_offset: 0
+    bit_size: 32
 fieldset/MMC_TX_INTERRUPT:
   description: MMC Tx interrupt register
   fields:
@@ -2476,6 +3030,13 @@ fieldset/RX_CRC_ERROR_PACKETS:
     description: Rx CRC Error Packets
     bit_offset: 0
     bit_size: 32
+fieldset/RX_FPE_FRAG_CR:
+  description: MMC Rx FPE fragments counter register.
+  fields:
+  - name: FFC
+    description: Rx FPE Fragment Counter.
+    bit_offset: 0
+    bit_size: 32
 fieldset/RX_LPI_TRAN_CNTR:
   description: Rx LPI transition counter register
   fields:
@@ -2488,6 +3049,27 @@ fieldset/RX_LPI_USEC_CNTR:
   fields:
   - name: RXLPIUSC
     description: Rx LPI Microseconds Counter
+    bit_offset: 0
+    bit_size: 32
+fieldset/RX_PACKET_ASM_ERR:
+  description: MMC Rx packet assembly error register.
+  fields:
+  - name: PAEC
+    description: Rx Packet Assembly Error Counter.
+    bit_offset: 0
+    bit_size: 32
+fieldset/RX_PACKET_ASM_OKR:
+  description: MMC Rx packet assembly OK register.
+  fields:
+  - name: PAOC
+    description: Rx Packet Assembly OK Counter.
+    bit_offset: 0
+    bit_size: 32
+fieldset/RX_PACKET_SMD_ERR:
+  description: MMC Rx packet SMD error register.
+  fields:
+  - name: PSEC
+    description: Rx Packet SMD Error Counter.
     bit_offset: 0
     bit_size: 32
 fieldset/RX_UNICAST_PACKETS_GOOD:
