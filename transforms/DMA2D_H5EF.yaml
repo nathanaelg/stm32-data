@@ -1,0 +1,28 @@
+transforms:
+  # Auto-generated 0/1 enums are useless
+  - !DeleteEnums
+    from: .*
+
+  - !RenameRegisters
+    block: DMA2D
+    from: ^DMA2D_(.+)$
+    to: $1
+  - !Rename
+    from: ^DMA2D_(.+)$
+    to: $1
+    type: Fieldset
+
+  - !MergeFieldsets
+    from: ^FGCLUT\d+$
+    to: FGCLUT
+  - !MergeFieldsets
+    from: ^BGCLUT\d+$
+    to: BGCLUT
+  - !MakeRegisterArray
+    blocks: DMA2D
+    from: ^(FGCLUT)\d+$
+    to: $1
+  - !MakeRegisterArray
+    blocks: DMA2D
+    from: ^(BGCLUT)\d+$
+    to: $1

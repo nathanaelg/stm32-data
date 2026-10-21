@@ -1,0 +1,43 @@
+transforms:
+  # Auto-generated 0/1 enums are useless
+  - !DeleteEnums
+    from: .*
+
+  - !RenameRegisters
+    block: PLAY
+    from: ^PLAY_(.+)$
+    to: $1
+  - !Rename
+    from: ^PLAY_(.+)$
+    to: $1
+    type: Fieldset
+
+  - !MergeFieldsets
+    from: ^FILT\d+CFG$
+    to: FILTCFG
+  - !MergeFieldsets
+    from: ^LE\d+CFG1$
+    to: LECFG1
+  - !MergeFieldsets
+    from: ^LE\d+CFG2$
+    to: LECFG2
+  - !MergeFieldsets
+    from: ^OUT\d+CFG$
+    to: OUTCFG
+
+  - !MakeRegisterArray
+    blocks: PLAY
+    from: ^(FILT)\d+(CFG)$
+    to: $1$2
+  - !MakeRegisterArray
+    blocks: PLAY
+    from: ^(LE)\d+(CFG1)$
+    to: $1$2
+  - !MakeRegisterArray
+    blocks: PLAY
+    from: ^(LE)\d+(CFG2)$
+    to: $1$2
+  - !MakeRegisterArray
+    blocks: PLAY
+    from: ^(OUT)\d+(CFG)$
+    to: $1$2

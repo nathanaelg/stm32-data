@@ -1,0 +1,1212 @@
+block/PLAY:
+  description: PLAY register block.
+  items:
+  - name: CFGCR
+    description: PLAY configuration control register.
+    byte_offset: 0
+    fieldset: CFGCR
+  - name: SECCFGR
+    description: PLAY security attributes configuration register.
+    byte_offset: 4
+    fieldset: SECCFGR
+  - name: PRIVCFGR
+    description: PLAY privilege attributes configuration register.
+    byte_offset: 8
+    fieldset: PRIVCFGR
+  - name: FILTCFG
+    description: PLAY filter 0 configuration register.
+    array:
+      len: 16
+      stride: 4
+    byte_offset: 32
+    fieldset: FILTCFG
+  - name: LECFG1
+    description: PLAY logic element 0 configuration register 1.
+    array:
+      len: 16
+      stride: 4
+    byte_offset: 96
+    fieldset: LECFG1
+  - name: LECFG2
+    description: PLAY logic element 0 configuration register 2.
+    array:
+      len: 16
+      stride: 4
+    byte_offset: 160
+    fieldset: LECFG2
+  - name: OUTCFG
+    description: PLAY output 0 configuration register.
+    array:
+      len: 16
+      stride: 4
+    byte_offset: 256
+    fieldset: OUTCFG
+  - name: SWIN
+    description: PLAY software input status register.
+    byte_offset: 512
+    fieldset: SWIN
+  - name: SWINSET
+    description: PLAY software input set register.
+    byte_offset: 516
+    access: Write
+    fieldset: SWINSET
+  - name: SWINCLR
+    description: PLAY software input clear register.
+    byte_offset: 520
+    access: Write
+    fieldset: SWINCLR
+  - name: OSR
+    description: PLAY output status register.
+    byte_offset: 528
+    access: Read
+    fieldset: OSR
+  - name: FLSTAT
+    description: PLAY flag status register.
+    byte_offset: 544
+    access: Read
+    fieldset: FLSTAT
+  - name: FLSET
+    description: PLAY flag set register.
+    byte_offset: 548
+    access: Write
+    fieldset: FLSET
+  - name: FLCLR
+    description: PLAY flag clear register.
+    byte_offset: 552
+    access: Write
+    fieldset: FLCLR
+  - name: FLIER
+    description: PLAY flag interrupt enable register.
+    byte_offset: 556
+    fieldset: FLIER
+  - name: FLCTL
+    description: PLAY flag control register.
+    byte_offset: 560
+    fieldset: FLCTL
+  - name: MSR
+    description: PLAY miscellaneous status register.
+    byte_offset: 564
+    access: Read
+    fieldset: MSR
+  - name: ISR
+    description: PLAY interrupt status register.
+    byte_offset: 568
+    access: Read
+    fieldset: ISR
+  - name: ICR
+    description: PLAY interrupt clear register.
+    byte_offset: 572
+    access: Write
+    fieldset: ICR
+  - name: IER
+    description: PLAY interrupt enable register.
+    byte_offset: 576
+    fieldset: IER
+fieldset/CFGCR:
+  description: PLAY configuration control register.
+  fields:
+  - name: UNLOCK
+    description: Unlock configuration.
+    bit_offset: 0
+    bit_size: 1
+fieldset/FILTCFG:
+  description: PLAY filter 0 configuration register.
+  fields:
+  - name: WIDTH
+    description: Minimum pulse width.
+    bit_offset: 0
+    bit_size: 8
+  - name: EDGEDET
+    description: Edge detection mode.
+    bit_offset: 8
+    bit_size: 2
+  - name: PREMUXSEL
+    description: Input pre-multiplexer select.
+    bit_offset: 16
+    bit_size: 3
+fieldset/FLCLR:
+  description: PLAY flag clear register.
+  fields:
+  - name: FLAGD_CLR0
+    description: Flag clear for LEy direct output.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLAGD_CLR1
+    description: Flag clear for LEy direct output.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGD_CLR2
+    description: Flag clear for LEy direct output.
+    bit_offset: 2
+    bit_size: 1
+  - name: FLAGD_CLR3
+    description: Flag clear for LEy direct output.
+    bit_offset: 3
+    bit_size: 1
+  - name: FLAGD_CLR4
+    description: Flag clear for LEy direct output.
+    bit_offset: 4
+    bit_size: 1
+  - name: FLAGD_CLR5
+    description: Flag clear for LEy direct output.
+    bit_offset: 5
+    bit_size: 1
+  - name: FLAGD_CLR6
+    description: Flag clear for LEy direct output.
+    bit_offset: 6
+    bit_size: 1
+  - name: FLAGD_CLR7
+    description: Flag clear for LEy direct output.
+    bit_offset: 7
+    bit_size: 1
+  - name: FLAGD_CLR8
+    description: Flag clear for LEy direct output.
+    bit_offset: 8
+    bit_size: 1
+  - name: FLAGD_CLR9
+    description: Flag clear for LEy direct output.
+    bit_offset: 9
+    bit_size: 1
+  - name: FLAGD_CLR10
+    description: Flag clear for LEy direct output.
+    bit_offset: 10
+    bit_size: 1
+  - name: FLAGD_CLR11
+    description: Flag clear for LEy direct output.
+    bit_offset: 11
+    bit_size: 1
+  - name: FLAGD_CLR12
+    description: Flag clear for LEy direct output.
+    bit_offset: 12
+    bit_size: 1
+  - name: FLAGD_CLR13
+    description: Flag clear for LEy direct output.
+    bit_offset: 13
+    bit_size: 1
+  - name: FLAGD_CLR14
+    description: Flag clear for LEy direct output.
+    bit_offset: 14
+    bit_size: 1
+  - name: FLAGD_CLR15
+    description: Flag clear for LEy direct output.
+    bit_offset: 15
+    bit_size: 1
+  - name: FLAGR_CLR0
+    description: Flag clear for LEy registered output.
+    bit_offset: 16
+    bit_size: 1
+  - name: FLAGR_CLR1
+    description: Flag clear for LEy registered output.
+    bit_offset: 17
+    bit_size: 1
+  - name: FLAGR_CLR2
+    description: Flag clear for LEy registered output.
+    bit_offset: 18
+    bit_size: 1
+  - name: FLAGR_CLR3
+    description: Flag clear for LEy registered output.
+    bit_offset: 19
+    bit_size: 1
+  - name: FLAGR_CLR4
+    description: Flag clear for LEy registered output.
+    bit_offset: 20
+    bit_size: 1
+  - name: FLAGR_CLR5
+    description: Flag clear for LEy registered output.
+    bit_offset: 21
+    bit_size: 1
+  - name: FLAGR_CLR6
+    description: Flag clear for LEy registered output.
+    bit_offset: 22
+    bit_size: 1
+  - name: FLAGR_CLR7
+    description: Flag clear for LEy registered output.
+    bit_offset: 23
+    bit_size: 1
+  - name: FLAGR_CLR8
+    description: Flag clear for LEy registered output.
+    bit_offset: 24
+    bit_size: 1
+  - name: FLAGR_CLR9
+    description: Flag clear for LEy registered output.
+    bit_offset: 25
+    bit_size: 1
+  - name: FLAGR_CLR10
+    description: Flag clear for LEy registered output.
+    bit_offset: 26
+    bit_size: 1
+  - name: FLAGR_CLR11
+    description: Flag clear for LEy registered output.
+    bit_offset: 27
+    bit_size: 1
+  - name: FLAGR_CLR12
+    description: Flag clear for LEy registered output.
+    bit_offset: 28
+    bit_size: 1
+  - name: FLAGR_CLR13
+    description: Flag clear for LEy registered output.
+    bit_offset: 29
+    bit_size: 1
+  - name: FLAGR_CLR14
+    description: Flag clear for LEy registered output.
+    bit_offset: 30
+    bit_size: 1
+  - name: FLAGR_CLR15
+    description: Flag clear for LEy registered output.
+    bit_offset: 31
+    bit_size: 1
+fieldset/FLCTL:
+  description: PLAY flag control register.
+  fields:
+  - name: FLAGD_EDGE0
+    description: Edge direction for LEy direct output.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLAGD_EDGE1
+    description: Edge direction for LEy direct output.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGD_EDGE2
+    description: Edge direction for LEy direct output.
+    bit_offset: 2
+    bit_size: 1
+  - name: FLAGD_EDGE3
+    description: Edge direction for LEy direct output.
+    bit_offset: 3
+    bit_size: 1
+  - name: FLAGD_EDGE4
+    description: Edge direction for LEy direct output.
+    bit_offset: 4
+    bit_size: 1
+  - name: FLAGD_EDGE5
+    description: Edge direction for LEy direct output.
+    bit_offset: 5
+    bit_size: 1
+  - name: FLAGD_EDGE6
+    description: Edge direction for LEy direct output.
+    bit_offset: 6
+    bit_size: 1
+  - name: FLAGD_EDGE7
+    description: Edge direction for LEy direct output.
+    bit_offset: 7
+    bit_size: 1
+  - name: FLAGD_EDGE8
+    description: Edge direction for LEy direct output.
+    bit_offset: 8
+    bit_size: 1
+  - name: FLAGD_EDGE9
+    description: Edge direction for LEy direct output.
+    bit_offset: 9
+    bit_size: 1
+  - name: FLAGD_EDGE10
+    description: Edge direction for LEy direct output.
+    bit_offset: 10
+    bit_size: 1
+  - name: FLAGD_EDGE11
+    description: Edge direction for LEy direct output.
+    bit_offset: 11
+    bit_size: 1
+  - name: FLAGD_EDGE12
+    description: Edge direction for LEy direct output.
+    bit_offset: 12
+    bit_size: 1
+  - name: FLAGD_EDGE13
+    description: Edge direction for LEy direct output.
+    bit_offset: 13
+    bit_size: 1
+  - name: FLAGD_EDGE14
+    description: Edge direction for LEy direct output.
+    bit_offset: 14
+    bit_size: 1
+  - name: FLAGD_EDGE15
+    description: Edge direction for LEy direct output.
+    bit_offset: 15
+    bit_size: 1
+  - name: FLAGR_EDGE0
+    description: Edge direction for LEy registered output.
+    bit_offset: 16
+    bit_size: 1
+  - name: FLAGR_EDGE1
+    description: Edge direction for LEy registered output.
+    bit_offset: 17
+    bit_size: 1
+  - name: FLAGR_EDGE2
+    description: Edge direction for LEy registered output.
+    bit_offset: 18
+    bit_size: 1
+  - name: FLAGR_EDGE3
+    description: Edge direction for LEy registered output.
+    bit_offset: 19
+    bit_size: 1
+  - name: FLAGR_EDGE4
+    description: Edge direction for LEy registered output.
+    bit_offset: 20
+    bit_size: 1
+  - name: FLAGR_EDGE5
+    description: Edge direction for LEy registered output.
+    bit_offset: 21
+    bit_size: 1
+  - name: FLAGR_EDGE6
+    description: Edge direction for LEy registered output.
+    bit_offset: 22
+    bit_size: 1
+  - name: FLAGR_EDGE7
+    description: Edge direction for LEy registered output.
+    bit_offset: 23
+    bit_size: 1
+  - name: FLAGR_EDGE8
+    description: Edge direction for LEy registered output.
+    bit_offset: 24
+    bit_size: 1
+  - name: FLAGR_EDGE9
+    description: Edge direction for LEy registered output.
+    bit_offset: 25
+    bit_size: 1
+  - name: FLAGR_EDGE10
+    description: Edge direction for LEy registered output.
+    bit_offset: 26
+    bit_size: 1
+  - name: FLAGR_EDGE11
+    description: Edge direction for LEy registered output.
+    bit_offset: 27
+    bit_size: 1
+  - name: FLAGR_EDGE12
+    description: Edge direction for LEy registered output.
+    bit_offset: 28
+    bit_size: 1
+  - name: FLAGR_EDGE13
+    description: Edge direction for LEy registered output.
+    bit_offset: 29
+    bit_size: 1
+  - name: FLAGR_EDGE14
+    description: Edge direction for LEy registered output.
+    bit_offset: 30
+    bit_size: 1
+  - name: FLAGR_EDGE15
+    description: Edge direction for LEy registered output.
+    bit_offset: 31
+    bit_size: 1
+fieldset/FLIER:
+  description: PLAY flag interrupt enable register.
+  fields:
+  - name: FLAGD_IEN0
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLAGD_IEN1
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGD_IEN2
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 2
+    bit_size: 1
+  - name: FLAGD_IEN3
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 3
+    bit_size: 1
+  - name: FLAGD_IEN4
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 4
+    bit_size: 1
+  - name: FLAGD_IEN5
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 5
+    bit_size: 1
+  - name: FLAGD_IEN6
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 6
+    bit_size: 1
+  - name: FLAGD_IEN7
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 7
+    bit_size: 1
+  - name: FLAGD_IEN8
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 8
+    bit_size: 1
+  - name: FLAGD_IEN9
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 9
+    bit_size: 1
+  - name: FLAGD_IEN10
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 10
+    bit_size: 1
+  - name: FLAGD_IEN11
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 11
+    bit_size: 1
+  - name: FLAGD_IEN12
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 12
+    bit_size: 1
+  - name: FLAGD_IEN13
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 13
+    bit_size: 1
+  - name: FLAGD_IEN14
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 14
+    bit_size: 1
+  - name: FLAGD_IEN15
+    description: Flag interrupt enable for LEy direct output.
+    bit_offset: 15
+    bit_size: 1
+  - name: FLAGR_IEN0
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 16
+    bit_size: 1
+  - name: FLAGR_IEN1
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 17
+    bit_size: 1
+  - name: FLAGR_IEN2
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 18
+    bit_size: 1
+  - name: FLAGR_IEN3
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 19
+    bit_size: 1
+  - name: FLAGR_IEN4
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 20
+    bit_size: 1
+  - name: FLAGR_IEN5
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 21
+    bit_size: 1
+  - name: FLAGR_IEN6
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 22
+    bit_size: 1
+  - name: FLAGR_IEN7
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 23
+    bit_size: 1
+  - name: FLAGR_IEN8
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 24
+    bit_size: 1
+  - name: FLAGR_IEN9
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 25
+    bit_size: 1
+  - name: FLAGR_IEN10
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 26
+    bit_size: 1
+  - name: FLAGR_IEN11
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 27
+    bit_size: 1
+  - name: FLAGR_IEN12
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 28
+    bit_size: 1
+  - name: FLAGR_IEN13
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 29
+    bit_size: 1
+  - name: FLAGR_IEN14
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 30
+    bit_size: 1
+  - name: FLAGR_IEN15
+    description: Flag interrupt enable for LEy registered output.
+    bit_offset: 31
+    bit_size: 1
+fieldset/FLSET:
+  description: PLAY flag set register.
+  fields:
+  - name: FLAGD_SET0
+    description: Flag set for LEy direct output.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLAGD_SET1
+    description: Flag set for LEy direct output.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGD_SET2
+    description: Flag set for LEy direct output.
+    bit_offset: 2
+    bit_size: 1
+  - name: FLAGD_SET3
+    description: Flag set for LEy direct output.
+    bit_offset: 3
+    bit_size: 1
+  - name: FLAGD_SET4
+    description: Flag set for LEy direct output.
+    bit_offset: 4
+    bit_size: 1
+  - name: FLAGD_SET5
+    description: Flag set for LEy direct output.
+    bit_offset: 5
+    bit_size: 1
+  - name: FLAGD_SET6
+    description: Flag set for LEy direct output.
+    bit_offset: 6
+    bit_size: 1
+  - name: FLAGD_SET7
+    description: Flag set for LEy direct output.
+    bit_offset: 7
+    bit_size: 1
+  - name: FLAGD_SET8
+    description: Flag set for LEy direct output.
+    bit_offset: 8
+    bit_size: 1
+  - name: FLAGD_SET9
+    description: Flag set for LEy direct output.
+    bit_offset: 9
+    bit_size: 1
+  - name: FLAGD_SET10
+    description: Flag set for LEy direct output.
+    bit_offset: 10
+    bit_size: 1
+  - name: FLAGD_SET11
+    description: Flag set for LEy direct output.
+    bit_offset: 11
+    bit_size: 1
+  - name: FLAGD_SET12
+    description: Flag set for LEy direct output.
+    bit_offset: 12
+    bit_size: 1
+  - name: FLAGD_SET13
+    description: Flag set for LEy direct output.
+    bit_offset: 13
+    bit_size: 1
+  - name: FLAGD_SET14
+    description: Flag set for LEy direct output.
+    bit_offset: 14
+    bit_size: 1
+  - name: FLAGD_SET15
+    description: Flag set for LEy direct output.
+    bit_offset: 15
+    bit_size: 1
+  - name: FLAGR_SET0
+    description: Flag set for LEy registered output.
+    bit_offset: 16
+    bit_size: 1
+  - name: FLAGR_SET1
+    description: Flag set for LEy registered output.
+    bit_offset: 17
+    bit_size: 1
+  - name: FLAGR_SET2
+    description: Flag set for LEy registered output.
+    bit_offset: 18
+    bit_size: 1
+  - name: FLAGR_SET3
+    description: Flag set for LEy registered output.
+    bit_offset: 19
+    bit_size: 1
+  - name: FLAGR_SET4
+    description: Flag set for LEy registered output.
+    bit_offset: 20
+    bit_size: 1
+  - name: FLAGR_SET5
+    description: Flag set for LEy registered output.
+    bit_offset: 21
+    bit_size: 1
+  - name: FLAGR_SET6
+    description: Flag set for LEy registered output.
+    bit_offset: 22
+    bit_size: 1
+  - name: FLAGR_SET7
+    description: Flag set for LEy registered output.
+    bit_offset: 23
+    bit_size: 1
+  - name: FLAGR_SET8
+    description: Flag set for LEy registered output.
+    bit_offset: 24
+    bit_size: 1
+  - name: FLAGR_SET9
+    description: Flag set for LEy registered output.
+    bit_offset: 25
+    bit_size: 1
+  - name: FLAGR_SET10
+    description: Flag set for LEy registered output.
+    bit_offset: 26
+    bit_size: 1
+  - name: FLAGR_SET11
+    description: Flag set for LEy registered output.
+    bit_offset: 27
+    bit_size: 1
+  - name: FLAGR_SET12
+    description: Flag set for LEy registered output.
+    bit_offset: 28
+    bit_size: 1
+  - name: FLAGR_SET13
+    description: Flag set for LEy registered output.
+    bit_offset: 29
+    bit_size: 1
+  - name: FLAGR_SET14
+    description: Flag set for LEy registered output.
+    bit_offset: 30
+    bit_size: 1
+  - name: FLAGR_SET15
+    description: Flag set for LEy registered output.
+    bit_offset: 31
+    bit_size: 1
+fieldset/FLSTAT:
+  description: PLAY flag status register.
+  fields:
+  - name: FLAGD0
+    description: Flag state for LEy direct output.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLAGD1
+    description: Flag state for LEy direct output.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGD2
+    description: Flag state for LEy direct output.
+    bit_offset: 2
+    bit_size: 1
+  - name: FLAGD3
+    description: Flag state for LEy direct output.
+    bit_offset: 3
+    bit_size: 1
+  - name: FLAGD4
+    description: Flag state for LEy direct output.
+    bit_offset: 4
+    bit_size: 1
+  - name: FLAGD5
+    description: Flag state for LEy direct output.
+    bit_offset: 5
+    bit_size: 1
+  - name: FLAGD6
+    description: Flag state for LEy direct output.
+    bit_offset: 6
+    bit_size: 1
+  - name: FLAGD7
+    description: Flag state for LEy direct output.
+    bit_offset: 7
+    bit_size: 1
+  - name: FLAGD8
+    description: Flag state for LEy direct output.
+    bit_offset: 8
+    bit_size: 1
+  - name: FLAGD9
+    description: Flag state for LEy direct output.
+    bit_offset: 9
+    bit_size: 1
+  - name: FLAGD10
+    description: Flag state for LEy direct output.
+    bit_offset: 10
+    bit_size: 1
+  - name: FLAGD11
+    description: Flag state for LEy direct output.
+    bit_offset: 11
+    bit_size: 1
+  - name: FLAGD12
+    description: Flag state for LEy direct output.
+    bit_offset: 12
+    bit_size: 1
+  - name: FLAGD13
+    description: Flag state for LEy direct output.
+    bit_offset: 13
+    bit_size: 1
+  - name: FLAGD14
+    description: Flag state for LEy direct output.
+    bit_offset: 14
+    bit_size: 1
+  - name: FLAGD15
+    description: Flag state for LEy direct output.
+    bit_offset: 15
+    bit_size: 1
+  - name: FLAGR0
+    description: Flag state for LEy registered output.
+    bit_offset: 16
+    bit_size: 1
+  - name: FLAGR1
+    description: Flag state for LEy registered output.
+    bit_offset: 17
+    bit_size: 1
+  - name: FLAGR2
+    description: Flag state for LEy registered output.
+    bit_offset: 18
+    bit_size: 1
+  - name: FLAGR3
+    description: Flag state for LEy registered output.
+    bit_offset: 19
+    bit_size: 1
+  - name: FLAGR4
+    description: Flag state for LEy registered output.
+    bit_offset: 20
+    bit_size: 1
+  - name: FLAGR5
+    description: Flag state for LEy registered output.
+    bit_offset: 21
+    bit_size: 1
+  - name: FLAGR6
+    description: Flag state for LEy registered output.
+    bit_offset: 22
+    bit_size: 1
+  - name: FLAGR7
+    description: Flag state for LEy registered output.
+    bit_offset: 23
+    bit_size: 1
+  - name: FLAGR8
+    description: Flag state for LEy registered output.
+    bit_offset: 24
+    bit_size: 1
+  - name: FLAGR9
+    description: Flag state for LEy registered output.
+    bit_offset: 25
+    bit_size: 1
+  - name: FLAGR10
+    description: Flag state for LEy registered output.
+    bit_offset: 26
+    bit_size: 1
+  - name: FLAGR11
+    description: Flag state for LEy registered output.
+    bit_offset: 27
+    bit_size: 1
+  - name: FLAGR12
+    description: Flag state for LEy registered output.
+    bit_offset: 28
+    bit_size: 1
+  - name: FLAGR13
+    description: Flag state for LEy registered output.
+    bit_offset: 29
+    bit_size: 1
+  - name: FLAGR14
+    description: Flag state for LEy registered output.
+    bit_offset: 30
+    bit_size: 1
+  - name: FLAGR15
+    description: Flag state for LEy registered output.
+    bit_offset: 31
+    bit_size: 1
+fieldset/ICR:
+  description: PLAY interrupt clear register.
+  fields:
+  - name: SWINWC_CLR
+    description: PLAY_SWIN register write complete interrupt clear.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLCTLWC_CLR
+    description: PLAY_FLCTL register write complete interrupt clear.
+    bit_offset: 1
+    bit_size: 1
+fieldset/IER:
+  description: PLAY interrupt enable register.
+  fields:
+  - name: SWINWC_IEN
+    description: PLAY_SWIN register write complete interrupt enable.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLCTLWC_IEN
+    description: PLAY_FLCTL register write complete interrupt enable.
+    bit_offset: 1
+    bit_size: 1
+fieldset/ISR:
+  description: PLAY interrupt status register.
+  fields:
+  - name: SWINWC
+    description: PLAY_SWIN register write complete interrupt status.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLCTLWC
+    description: PLAY_FLCTL register write complete interrupt status.
+    bit_offset: 1
+    bit_size: 1
+  - name: FLAGS
+    description: Flag interrupts status.
+    bit_offset: 2
+    bit_size: 1
+fieldset/LECFG1:
+  description: PLAY logic element 0 configuration register 1.
+  fields:
+  - name: LUT
+    description: Look-up table contents.
+    bit_offset: 0
+    bit_size: 16
+fieldset/LECFG2:
+  description: PLAY logic element 0 configuration register 2.
+  fields:
+  - name: IN0_SEL
+    description: Logic element input 0 selection.
+    bit_offset: 0
+    bit_size: 6
+  - name: IN1_SEL
+    description: Logic element input 1 selection.
+    bit_offset: 6
+    bit_size: 6
+  - name: IN2_SEL
+    description: Logic element input 2 selection.
+    bit_offset: 12
+    bit_size: 6
+  - name: IN3_SEL
+    description: Logic element input 3 selection.
+    bit_offset: 18
+    bit_size: 6
+  - name: CK_SEL
+    description: Clock enable selection.
+    bit_offset: 24
+    bit_size: 6
+fieldset/MSR:
+  description: PLAY miscellaneous status register.
+  fields:
+  - name: SWINWBFS
+    description: PLAY_SWIN register write busy flag status.
+    bit_offset: 0
+    bit_size: 1
+  - name: FLCTLWBFS
+    description: PLAY_FLCTL register write busy flag status.
+    bit_offset: 1
+    bit_size: 1
+fieldset/OSR:
+  description: PLAY output status register.
+  fields:
+  - name: LEOUTD0
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 0
+    bit_size: 1
+  - name: LEOUTD1
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 1
+    bit_size: 1
+  - name: LEOUTD2
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 2
+    bit_size: 1
+  - name: LEOUTD3
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 3
+    bit_size: 1
+  - name: LEOUTD4
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 4
+    bit_size: 1
+  - name: LEOUTD5
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 5
+    bit_size: 1
+  - name: LEOUTD6
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 6
+    bit_size: 1
+  - name: LEOUTD7
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 7
+    bit_size: 1
+  - name: LEOUTD8
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 8
+    bit_size: 1
+  - name: LEOUTD9
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 9
+    bit_size: 1
+  - name: LEOUTD10
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 10
+    bit_size: 1
+  - name: LEOUTD11
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 11
+    bit_size: 1
+  - name: LEOUTD12
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 12
+    bit_size: 1
+  - name: LEOUTD13
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 13
+    bit_size: 1
+  - name: LEOUTD14
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 14
+    bit_size: 1
+  - name: LEOUTD15
+    description: State of LE direct outputs leoutdy.
+    bit_offset: 15
+    bit_size: 1
+  - name: LEOUTR0
+    description: State of LE registered output leoutry.
+    bit_offset: 16
+    bit_size: 1
+  - name: LEOUTR1
+    description: State of LE registered output leoutry.
+    bit_offset: 17
+    bit_size: 1
+  - name: LEOUTR2
+    description: State of LE registered output leoutry.
+    bit_offset: 18
+    bit_size: 1
+  - name: LEOUTR3
+    description: State of LE registered output leoutry.
+    bit_offset: 19
+    bit_size: 1
+  - name: LEOUTR4
+    description: State of LE registered output leoutry.
+    bit_offset: 20
+    bit_size: 1
+  - name: LEOUTR5
+    description: State of LE registered output leoutry.
+    bit_offset: 21
+    bit_size: 1
+  - name: LEOUTR6
+    description: State of LE registered output leoutry.
+    bit_offset: 22
+    bit_size: 1
+  - name: LEOUTR7
+    description: State of LE registered output leoutry.
+    bit_offset: 23
+    bit_size: 1
+  - name: LEOUTR8
+    description: State of LE registered output leoutry.
+    bit_offset: 24
+    bit_size: 1
+  - name: LEOUTR9
+    description: State of LE registered output leoutry.
+    bit_offset: 25
+    bit_size: 1
+  - name: LEOUTR10
+    description: State of LE registered output leoutry.
+    bit_offset: 26
+    bit_size: 1
+  - name: LEOUTR11
+    description: State of LE registered output leoutry.
+    bit_offset: 27
+    bit_size: 1
+  - name: LEOUTR12
+    description: State of LE registered output leoutry.
+    bit_offset: 28
+    bit_size: 1
+  - name: LEOUTR13
+    description: State of LE registered output leoutry.
+    bit_offset: 29
+    bit_size: 1
+  - name: LEOUTR14
+    description: State of LE registered output leoutry.
+    bit_offset: 30
+    bit_size: 1
+  - name: LEOUTR15
+    description: State of LE registered output leoutry.
+    bit_offset: 31
+    bit_size: 1
+fieldset/OUTCFG:
+  description: PLAY output 0 configuration register.
+  fields:
+  - name: SEL
+    description: Output source selection.
+    bit_offset: 0
+    bit_size: 5
+fieldset/PRIVCFGR:
+  description: PLAY privilege attributes configuration register.
+  fields:
+  - name: PRIV
+    description: Privilege access control.
+    bit_offset: 0
+    bit_size: 2
+fieldset/SECCFGR:
+  description: PLAY security attributes configuration register.
+  fields:
+  - name: SEC
+    description: Secure access control.
+    bit_offset: 0
+    bit_size: 2
+fieldset/SWIN:
+  description: PLAY software input status register.
+  fields:
+  - name: SWIN0
+    description: Input swiny state.
+    bit_offset: 0
+    bit_size: 1
+  - name: SWIN1
+    description: Input swiny state.
+    bit_offset: 1
+    bit_size: 1
+  - name: SWIN2
+    description: Input swiny state.
+    bit_offset: 2
+    bit_size: 1
+  - name: SWIN3
+    description: Input swiny state.
+    bit_offset: 3
+    bit_size: 1
+  - name: SWIN4
+    description: Input swiny state.
+    bit_offset: 4
+    bit_size: 1
+  - name: SWIN5
+    description: Input swiny state.
+    bit_offset: 5
+    bit_size: 1
+  - name: SWIN6
+    description: Input swiny state.
+    bit_offset: 6
+    bit_size: 1
+  - name: SWIN7
+    description: Input swiny state.
+    bit_offset: 7
+    bit_size: 1
+  - name: SWIN8
+    description: Input swiny state.
+    bit_offset: 8
+    bit_size: 1
+  - name: SWIN9
+    description: Input swiny state.
+    bit_offset: 9
+    bit_size: 1
+  - name: SWIN10
+    description: Input swiny state.
+    bit_offset: 10
+    bit_size: 1
+  - name: SWIN11
+    description: Input swiny state.
+    bit_offset: 11
+    bit_size: 1
+  - name: SWIN12
+    description: Input swiny state.
+    bit_offset: 12
+    bit_size: 1
+  - name: SWIN13
+    description: Input swiny state.
+    bit_offset: 13
+    bit_size: 1
+  - name: SWIN14
+    description: Input swiny state.
+    bit_offset: 14
+    bit_size: 1
+  - name: SWIN15
+    description: Input swiny state.
+    bit_offset: 15
+    bit_size: 1
+fieldset/SWINCLR:
+  description: PLAY software input clear register.
+  fields:
+  - name: SWIN0
+    description: Reset PLAY_SWIN.
+    bit_offset: 0
+    bit_size: 1
+  - name: SWIN1
+    description: Reset PLAY_SWIN.
+    bit_offset: 1
+    bit_size: 1
+  - name: SWIN2
+    description: Reset PLAY_SWIN.
+    bit_offset: 2
+    bit_size: 1
+  - name: SWIN3
+    description: Reset PLAY_SWIN.
+    bit_offset: 3
+    bit_size: 1
+  - name: SWIN4
+    description: Reset PLAY_SWIN.
+    bit_offset: 4
+    bit_size: 1
+  - name: SWIN5
+    description: Reset PLAY_SWIN.
+    bit_offset: 5
+    bit_size: 1
+  - name: SWIN6
+    description: Reset PLAY_SWIN.
+    bit_offset: 6
+    bit_size: 1
+  - name: SWIN7
+    description: Reset PLAY_SWIN.
+    bit_offset: 7
+    bit_size: 1
+  - name: SWIN8
+    description: Reset PLAY_SWIN.
+    bit_offset: 8
+    bit_size: 1
+  - name: SWIN9
+    description: Reset PLAY_SWIN.
+    bit_offset: 9
+    bit_size: 1
+  - name: SWIN10
+    description: Reset PLAY_SWIN.
+    bit_offset: 10
+    bit_size: 1
+  - name: SWIN11
+    description: Reset PLAY_SWIN.
+    bit_offset: 11
+    bit_size: 1
+  - name: SWIN12
+    description: Reset PLAY_SWIN.
+    bit_offset: 12
+    bit_size: 1
+  - name: SWIN13
+    description: Reset PLAY_SWIN.
+    bit_offset: 13
+    bit_size: 1
+  - name: SWIN14
+    description: Reset PLAY_SWIN.
+    bit_offset: 14
+    bit_size: 1
+  - name: SWIN15
+    description: Reset PLAY_SWIN.
+    bit_offset: 15
+    bit_size: 1
+fieldset/SWINSET:
+  description: PLAY software input set register.
+  fields:
+  - name: SWIN0
+    description: Set PLAY_SWIN.
+    bit_offset: 0
+    bit_size: 1
+  - name: SWIN1
+    description: Set PLAY_SWIN.
+    bit_offset: 1
+    bit_size: 1
+  - name: SWIN2
+    description: Set PLAY_SWIN.
+    bit_offset: 2
+    bit_size: 1
+  - name: SWIN3
+    description: Set PLAY_SWIN.
+    bit_offset: 3
+    bit_size: 1
+  - name: SWIN4
+    description: Set PLAY_SWIN.
+    bit_offset: 4
+    bit_size: 1
+  - name: SWIN5
+    description: Set PLAY_SWIN.
+    bit_offset: 5
+    bit_size: 1
+  - name: SWIN6
+    description: Set PLAY_SWIN.
+    bit_offset: 6
+    bit_size: 1
+  - name: SWIN7
+    description: Set PLAY_SWIN.
+    bit_offset: 7
+    bit_size: 1
+  - name: SWIN8
+    description: Set PLAY_SWIN.
+    bit_offset: 8
+    bit_size: 1
+  - name: SWIN9
+    description: Set PLAY_SWIN.
+    bit_offset: 9
+    bit_size: 1
+  - name: SWIN10
+    description: Set PLAY_SWIN.
+    bit_offset: 10
+    bit_size: 1
+  - name: SWIN11
+    description: Set PLAY_SWIN.
+    bit_offset: 11
+    bit_size: 1
+  - name: SWIN12
+    description: Set PLAY_SWIN.
+    bit_offset: 12
+    bit_size: 1
+  - name: SWIN13
+    description: Set PLAY_SWIN.
+    bit_offset: 13
+    bit_size: 1
+  - name: SWIN14
+    description: Set PLAY_SWIN.
+    bit_offset: 14
+    bit_size: 1
+  - name: SWIN15
+    description: Set PLAY_SWIN.
+    bit_offset: 15
+    bit_size: 1

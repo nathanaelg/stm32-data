@@ -1,0 +1,999 @@
+block/DMA2D:
+  description: DMA2D address block description.
+  items:
+  - name: CR
+    description: DMA2D control register.
+    byte_offset: 0
+    fieldset: CR
+  - name: ISR
+    description: DMA2D interrupt status register.
+    byte_offset: 16
+    access: Read
+    fieldset: ISR
+  - name: IER
+    description: DMA2D interrupt enable register.
+    byte_offset: 20
+    fieldset: IER
+  - name: IFCR
+    description: DMA2D interrupt flag clear register.
+    byte_offset: 24
+    fieldset: IFCR
+  - name: FGMAR
+    description: DMA2D foreground memory address register.
+    byte_offset: 64
+    fieldset: FGMAR
+  - name: FGOR
+    description: DMA2D foreground offset register.
+    byte_offset: 68
+    fieldset: FGOR
+  - name: FGMSR
+    description: DMA2D foreground memory skip register.
+    byte_offset: 76
+    fieldset: FGMSR
+  - name: FGPFCCR
+    description: DMA2D foreground PFC control register.
+    byte_offset: 80
+    fieldset: FGPFCCR
+  - name: FGCOLR
+    description: DMA2D foreground color register.
+    byte_offset: 84
+    fieldset: FGCOLR
+  - name: FGCMAR
+    description: DMA2D foreground CLUT memory address register.
+    byte_offset: 88
+    fieldset: FGCMAR
+  - name: BGMAR
+    description: DMA2D background memory address register.
+    byte_offset: 128
+    fieldset: BGMAR
+  - name: BGOR
+    description: DMA2D background offset register.
+    byte_offset: 132
+    fieldset: BGOR
+  - name: BGMSR
+    description: DMA2D background memory skip register.
+    byte_offset: 140
+    fieldset: BGMSR
+  - name: BGPFCCR
+    description: DMA2D background PFC control register.
+    byte_offset: 144
+    fieldset: BGPFCCR
+  - name: BGCOLR
+    description: DMA2D background color register.
+    byte_offset: 148
+    fieldset: BGCOLR
+  - name: BGCMAR
+    description: DMA2D background CLUT memory address register.
+    byte_offset: 152
+    fieldset: BGCMAR
+  - name: OPFCCR
+    description: DMA2D output PFC control register.
+    byte_offset: 192
+    fieldset: OPFCCR
+  - name: OCOLR
+    description: DMA2D output color register.
+    byte_offset: 196
+    fieldset: OCOLR
+  - name: OMAR
+    description: DMA2D output memory address register.
+    byte_offset: 200
+    fieldset: OMAR
+  - name: OOR
+    description: DMA2D output offset register.
+    byte_offset: 204
+    fieldset: OOR
+  - name: NLR
+    description: DMA2D number of line register.
+    byte_offset: 208
+    fieldset: NLR
+  - name: LWR
+    description: DMA2D line watermark register.
+    byte_offset: 224
+    fieldset: LWR
+  - name: AMTCR
+    description: DMA2D AHB master timer configuration register.
+    byte_offset: 240
+    fieldset: AMTCR
+  - name: SBCR
+    description: DMA2D stencil buffer configuration register.
+    byte_offset: 256
+    fieldset: SBCR
+  - name: SBMAR
+    description: DMA2D stencil buffer memory address register.
+    byte_offset: 260
+    fieldset: SBMAR
+  - name: SBOR
+    description: DMA2D stencil buffer offset register.
+    byte_offset: 264
+    fieldset: SBOR
+  - name: SBMSR
+    description: DMA2D stencil buffer memory skip register.
+    byte_offset: 272
+    fieldset: SBMSR
+  - name: TBCR
+    description: DMA2D tile buffer configuration register.
+    byte_offset: 320
+    fieldset: TBCR
+  - name: SCR
+    description: DMA2D scaler configuration register.
+    byte_offset: 384
+    fieldset: SCR
+  - name: SNLR
+    description: DMA2D scaler number of line register.
+    byte_offset: 388
+    fieldset: SNLR
+  - name: SSR
+    description: DMA2D scaler step register.
+    byte_offset: 392
+    fieldset: SSR
+  - name: SPR
+    description: DMA2D scaler phase register.
+    byte_offset: 396
+    fieldset: SPR
+  - name: GPFCR
+    description: DMA2D general purpose flag configuration register.
+    byte_offset: 512
+    fieldset: GPFCR
+  - name: GPFR
+    description: DMA2D general purpose flag register.
+    byte_offset: 516
+    access: Read
+    fieldset: GPFR
+  - name: GPFSR
+    description: DMA2D general purpose flag set register.
+    byte_offset: 520
+    access: Write
+    fieldset: GPFSR
+  - name: GPFRR
+    description: DMA2D general purpose flag reset register.
+    byte_offset: 524
+    access: Write
+    fieldset: GPFRR
+  - name: CLCR
+    description: DMA2D command list configuration register.
+    byte_offset: 576
+    fieldset: CLCR
+  - name: CLSR
+    description: DMA2D command list status register.
+    byte_offset: 580
+    access: Read
+    fieldset: CLSR
+  - name: RBBAR
+    description: DMA2D ring buffer base address register.
+    byte_offset: 592
+    fieldset: RBBAR
+  - name: RBHPR
+    description: DMA2D ring buffer head pointer register.
+    byte_offset: 596
+    fieldset: RBHPR
+  - name: RBWPR
+    description: DMA2D ring buffer write pointer register.
+    byte_offset: 600
+    fieldset: RBWPR
+  - name: LBCBAR
+    description: DMA2D linear buffer current base address register.
+    byte_offset: 608
+    access: Read
+    fieldset: LBCBAR
+  - name: LBCSR
+    description: DMA2D linear buffer current size register.
+    byte_offset: 612
+    access: Read
+    fieldset: LBCSR
+  - name: LBCAR
+    description: DMA2D linear buffer current address register.
+    byte_offset: 616
+    access: Read
+    fieldset: LBCAR
+  - name: FGCLUT
+    description: DMA2D foreground CLUT0.
+    array:
+      len: 256
+      stride: 4
+    byte_offset: 1024
+    fieldset: FGCLUT
+  - name: BGCLUT
+    description: DMA2D background CLUT0.
+    array:
+      len: 256
+      stride: 4
+    byte_offset: 2048
+    fieldset: BGCLUT
+fieldset/AMTCR:
+  description: DMA2D AHB master timer configuration register.
+  fields:
+  - name: EN
+    description: Dead-time functionality enable.
+    bit_offset: 0
+    bit_size: 1
+  - name: DT
+    description: Dead time.
+    bit_offset: 8
+    bit_size: 8
+fieldset/BGCLUT:
+  description: DMA2D background CLUT0.
+  fields:
+  - name: BLUE
+    description: Blue.
+    bit_offset: 0
+    bit_size: 8
+  - name: GREEN
+    description: Green.
+    bit_offset: 8
+    bit_size: 8
+  - name: RED
+    description: Red.
+    bit_offset: 16
+    bit_size: 8
+  - name: ALPHA
+    description: Alpha.
+    bit_offset: 24
+    bit_size: 8
+fieldset/BGCMAR:
+  description: DMA2D background CLUT memory address register.
+  fields:
+  - name: MA
+    description: Memory address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/BGCOLR:
+  description: DMA2D background color register.
+  fields:
+  - name: BLUE
+    description: Blue value for the A1, A2, A4 or A8 mode of the foreground image.
+    bit_offset: 0
+    bit_size: 8
+  - name: GREEN
+    description: Green value for the A1, A2, A4 or A8 mode of the foreground image.
+    bit_offset: 8
+    bit_size: 8
+  - name: RED
+    description: Red value for the A1, A2, A4 or A8 mode of the layer image.
+    bit_offset: 16
+    bit_size: 8
+fieldset/BGMAR:
+  description: DMA2D background memory address register.
+  fields:
+  - name: MA
+    description: Memory address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/BGMSR:
+  description: DMA2D background memory skip register.
+  fields:
+  - name: HPRE
+    description: Horizontal pre pixels.
+    bit_offset: 0
+    bit_size: 4
+  - name: HTRAIL
+    description: Horizontal trailing pixels.
+    bit_offset: 8
+    bit_size: 4
+  - name: VPRE
+    description: Vertical pre lines.
+    bit_offset: 16
+    bit_size: 4
+  - name: VTRAIL
+    description: Vertical trailing lines.
+    bit_offset: 24
+    bit_size: 4
+fieldset/BGOR:
+  description: DMA2D background offset register.
+  fields:
+  - name: LO
+    description: Line offset.
+    bit_offset: 0
+    bit_size: 16
+fieldset/BGPFCCR:
+  description: DMA2D background PFC control register.
+  fields:
+  - name: CM
+    description: Color mode.
+    bit_offset: 0
+    bit_size: 4
+  - name: START
+    description: Start.
+    bit_offset: 5
+    bit_size: 1
+  - name: CS
+    description: CLUT size.
+    bit_offset: 8
+    bit_size: 8
+  - name: AM
+    description: Alpha mode.
+    bit_offset: 16
+    bit_size: 2
+  - name: CSS
+    description: Chroma sub-sampling.
+    bit_offset: 18
+    bit_size: 2
+  - name: AI
+    description: Alpha inverted.
+    bit_offset: 20
+    bit_size: 1
+  - name: RBS
+    description: Red/Blue swap.
+    bit_offset: 21
+    bit_size: 1
+  - name: APOS
+    description: Alpha position.
+    bit_offset: 22
+    bit_size: 1
+  - name: ALPHA
+    description: Alpha value.
+    bit_offset: 24
+    bit_size: 8
+fieldset/CLCR:
+  description: DMA2D command list configuration register.
+  fields:
+  - name: START
+    description: Start.
+    bit_offset: 0
+    bit_size: 1
+  - name: SUSP
+    description: Suspend.
+    bit_offset: 1
+    bit_size: 1
+  - name: ABORT
+    description: Abort.
+    bit_offset: 2
+    bit_size: 1
+  - name: RBS
+    description: Ring buffer size.
+    bit_offset: 4
+    bit_size: 3
+fieldset/CLSR:
+  description: DMA2D command list status register.
+  fields:
+  - name: SUSPS
+    description: SUSP bit suspend.
+    bit_offset: 0
+    bit_size: 1
+  - name: GPF0S
+    description: General purpose flag 0 suspend.
+    bit_offset: 1
+    bit_size: 1
+  - name: GPF1S
+    description: General purpose flag 1 suspend.
+    bit_offset: 2
+    bit_size: 1
+  - name: GPF2S
+    description: General purpose flag 2 suspend.
+    bit_offset: 3
+    bit_size: 1
+  - name: GPF3S
+    description: General purpose flag 3 suspend.
+    bit_offset: 4
+    bit_size: 1
+  - name: LCLRE
+    description: Linear command list read error.
+    bit_offset: 8
+    bit_size: 1
+  - name: LCLIE
+    description: Linear command list instruction error.
+    bit_offset: 9
+    bit_size: 1
+  - name: LCLMSE
+    description: Linear command list multiple start error.
+    bit_offset: 10
+    bit_size: 1
+fieldset/CR:
+  description: DMA2D control register.
+  fields:
+  - name: START
+    description: Start.
+    bit_offset: 0
+    bit_size: 1
+  - name: SUSP
+    description: Suspend.
+    bit_offset: 1
+    bit_size: 1
+  - name: ABORT
+    description: Abort.
+    bit_offset: 2
+    bit_size: 1
+  - name: LOM
+    description: Line offset mode.
+    bit_offset: 6
+    bit_size: 1
+  - name: MODE
+    description: DMA2D mode.
+    bit_offset: 16
+    bit_size: 3
+fieldset/FGCLUT:
+  description: DMA2D foreground CLUT0.
+  fields:
+  - name: BLUE
+    description: Blue.
+    bit_offset: 0
+    bit_size: 8
+  - name: GREEN
+    description: Green.
+    bit_offset: 8
+    bit_size: 8
+  - name: RED
+    description: Red.
+    bit_offset: 16
+    bit_size: 8
+  - name: ALPHA
+    description: Alpha.
+    bit_offset: 24
+    bit_size: 8
+fieldset/FGCMAR:
+  description: DMA2D foreground CLUT memory address register.
+  fields:
+  - name: MA
+    description: Memory address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/FGCOLR:
+  description: DMA2D foreground color register.
+  fields:
+  - name: BLUE
+    description: Blue value for the A1, A2, A4 or A8 mode of the foreground image.
+    bit_offset: 0
+    bit_size: 8
+  - name: GREEN
+    description: Green value for the A1, A2, A4 or A8 mode of the foreground image.
+    bit_offset: 8
+    bit_size: 8
+  - name: RED
+    description: Red value for the A1, A2, A4 or A8 mode of the layer image.
+    bit_offset: 16
+    bit_size: 8
+fieldset/FGMAR:
+  description: DMA2D foreground memory address register.
+  fields:
+  - name: MA
+    description: Memory address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/FGMSR:
+  description: DMA2D foreground memory skip register.
+  fields:
+  - name: HPRE
+    description: Horizontal pre pixels.
+    bit_offset: 0
+    bit_size: 4
+  - name: HTRAIL
+    description: Horizontal trailing pixels.
+    bit_offset: 8
+    bit_size: 4
+  - name: VPRE
+    description: Vertical pre lines.
+    bit_offset: 16
+    bit_size: 4
+  - name: VTRAIL
+    description: Vertical trailing lines.
+    bit_offset: 24
+    bit_size: 4
+fieldset/FGOR:
+  description: DMA2D foreground offset register.
+  fields:
+  - name: LO
+    description: Line offset.
+    bit_offset: 0
+    bit_size: 16
+fieldset/FGPFCCR:
+  description: DMA2D foreground PFC control register.
+  fields:
+  - name: CM
+    description: Color mode.
+    bit_offset: 0
+    bit_size: 4
+  - name: START
+    description: Start.
+    bit_offset: 5
+    bit_size: 1
+  - name: CS
+    description: CLUT size.
+    bit_offset: 8
+    bit_size: 8
+  - name: AM
+    description: Alpha mode.
+    bit_offset: 16
+    bit_size: 2
+  - name: CSS
+    description: Chroma sub-sampling.
+    bit_offset: 18
+    bit_size: 2
+  - name: AI
+    description: Alpha inverted.
+    bit_offset: 20
+    bit_size: 1
+  - name: RBS
+    description: Red/Blue swap.
+    bit_offset: 21
+    bit_size: 1
+  - name: APOS
+    description: Alpha position.
+    bit_offset: 22
+    bit_size: 1
+  - name: ALPHA
+    description: Alpha value.
+    bit_offset: 24
+    bit_size: 8
+fieldset/GPFCR:
+  description: DMA2D general purpose flag configuration register.
+  fields:
+  - name: GPF0IC
+    description: General purpose flag 0 interrupt configuration.
+    bit_offset: 0
+    bit_size: 2
+  - name: GPF1IC
+    description: General purpose flag 1 interrupt configuration.
+    bit_offset: 2
+    bit_size: 2
+  - name: GPF2IC
+    description: General purpose flag 2 interrupt configuration.
+    bit_offset: 4
+    bit_size: 2
+  - name: GPF3IC
+    description: General purpose flag 3 interrupt configuration.
+    bit_offset: 6
+    bit_size: 2
+  - name: GPF0SC
+    description: General purpose flag 0 suspend configuration.
+    bit_offset: 16
+    bit_size: 1
+  - name: GPF1SC
+    description: General purpose flag 1 suspend configuration.
+    bit_offset: 17
+    bit_size: 1
+  - name: GPF2SC
+    description: General purpose flag 2 suspend configuration.
+    bit_offset: 18
+    bit_size: 1
+  - name: GPF3SC
+    description: General purpose flag 3 suspend configuration.
+    bit_offset: 19
+    bit_size: 1
+fieldset/GPFR:
+  description: DMA2D general purpose flag register.
+  fields:
+  - name: GPF0
+    description: General purpose flag 0.
+    bit_offset: 0
+    bit_size: 1
+  - name: GPF1
+    description: General purpose flag 1.
+    bit_offset: 1
+    bit_size: 1
+  - name: GPF2
+    description: General purpose flag 2.
+    bit_offset: 2
+    bit_size: 1
+  - name: GPF3
+    description: General purpose flag 3.
+    bit_offset: 3
+    bit_size: 1
+fieldset/GPFRR:
+  description: DMA2D general purpose flag reset register.
+  fields:
+  - name: RGPF0
+    description: Reset general purpose flag 0.
+    bit_offset: 0
+    bit_size: 1
+  - name: RGPF1
+    description: Reset general purpose flag 1.
+    bit_offset: 1
+    bit_size: 1
+  - name: RGPF2
+    description: Reset general purpose flag 2.
+    bit_offset: 2
+    bit_size: 1
+  - name: RGPF3
+    description: Reset general purpose flag 3.
+    bit_offset: 3
+    bit_size: 1
+fieldset/GPFSR:
+  description: DMA2D general purpose flag set register.
+  fields:
+  - name: SGPF0
+    description: Set general purpose flag 0.
+    bit_offset: 0
+    bit_size: 1
+  - name: SGPF1
+    description: Set general purpose flag 1.
+    bit_offset: 1
+    bit_size: 1
+  - name: SGPF2
+    description: Set general purpose flag 2.
+    bit_offset: 2
+    bit_size: 1
+  - name: SGPF3
+    description: Set general purpose flag 3.
+    bit_offset: 3
+    bit_size: 1
+fieldset/IER:
+  description: DMA2D interrupt enable register.
+  fields:
+  - name: TEIE
+    description: Transfer error interrupt enable.
+    bit_offset: 0
+    bit_size: 1
+  - name: TCIE
+    description: Transfer complete interrupt enable.
+    bit_offset: 1
+    bit_size: 1
+  - name: TWIE
+    description: Transfer watermark interrupt enable.
+    bit_offset: 2
+    bit_size: 1
+  - name: CAEIE
+    description: CLUT access error interrupt enable.
+    bit_offset: 3
+    bit_size: 1
+  - name: CTCIE
+    description: CLUT transfer complete interrupt enable.
+    bit_offset: 4
+    bit_size: 1
+  - name: CEIE
+    description: Configuration error interrupt enable.
+    bit_offset: 5
+    bit_size: 1
+  - name: RBCIE
+    description: Ring buffer completed interrupt enable.
+    bit_offset: 8
+    bit_size: 1
+  - name: RBEIE
+    description: Ring buffer error interrupt enable.
+    bit_offset: 9
+    bit_size: 1
+  - name: CLSIE
+    description: Command list suspended interrupt enable.
+    bit_offset: 12
+    bit_size: 1
+  - name: CLEIE
+    description: Command list error interrupt enable.
+    bit_offset: 13
+    bit_size: 1
+  - name: GPF0IE
+    description: General purpose flag 0 interrupt enable.
+    bit_offset: 16
+    bit_size: 1
+  - name: GPF1IE
+    description: General purpose flag 1 interrupt enable.
+    bit_offset: 17
+    bit_size: 1
+  - name: GPF2IE
+    description: General purpose flag 2 interrupt enable.
+    bit_offset: 18
+    bit_size: 1
+  - name: GPF3IE
+    description: General purpose flag 3 interrupt enable.
+    bit_offset: 19
+    bit_size: 1
+fieldset/IFCR:
+  description: DMA2D interrupt flag clear register.
+  fields:
+  - name: CTEIF
+    description: Clear transfer error interrupt flag.
+    bit_offset: 0
+    bit_size: 1
+  - name: CTCIF
+    description: Clear transfer complete interrupt flag.
+    bit_offset: 1
+    bit_size: 1
+  - name: CTWIF
+    description: Clear transfer watermark interrupt flag.
+    bit_offset: 2
+    bit_size: 1
+  - name: CCAEIF
+    description: Clear CLUT access error interrupt flag.
+    bit_offset: 3
+    bit_size: 1
+  - name: CCTCIF
+    description: Clear CLUT transfer complete interrupt flag.
+    bit_offset: 4
+    bit_size: 1
+  - name: CCEIF
+    description: Clear configuration error interrupt flag.
+    bit_offset: 5
+    bit_size: 1
+  - name: CRBCIF
+    description: Clear ring buffer completed interrupt flag.
+    bit_offset: 8
+    bit_size: 1
+  - name: CRBEIF
+    description: Clear ring buffer error interrupt flag.
+    bit_offset: 9
+    bit_size: 1
+  - name: CCLSIF
+    description: Clear command list suspended interrupt flag.
+    bit_offset: 12
+    bit_size: 1
+  - name: CCLEIF
+    description: Clear command list error interrupt flag.
+    bit_offset: 13
+    bit_size: 1
+  - name: CGPF0IF
+    description: Clear general purpose flag 0 interrupt flag.
+    bit_offset: 16
+    bit_size: 1
+  - name: CGPF1IF
+    description: Clear general purpose flag 1interrupt flag.
+    bit_offset: 17
+    bit_size: 1
+  - name: CGPF2IF
+    description: Clear general purpose flag 2 interrupt flag.
+    bit_offset: 18
+    bit_size: 1
+  - name: CGPF3IF
+    description: Clear general purpose flag 3 interrupt flag.
+    bit_offset: 19
+    bit_size: 1
+fieldset/ISR:
+  description: DMA2D interrupt status register.
+  fields:
+  - name: TEIF
+    description: Transfer error interrupt flag.
+    bit_offset: 0
+    bit_size: 1
+  - name: TCIF
+    description: Transfer complete interrupt flag.
+    bit_offset: 1
+    bit_size: 1
+  - name: TWIF
+    description: Transfer watermark interrupt flag.
+    bit_offset: 2
+    bit_size: 1
+  - name: CAEIF
+    description: CLUT access error interrupt flag.
+    bit_offset: 3
+    bit_size: 1
+  - name: CTCIF
+    description: CLUT transfer complete interrupt flag.
+    bit_offset: 4
+    bit_size: 1
+  - name: CEIF
+    description: Configuration error interrupt flag.
+    bit_offset: 5
+    bit_size: 1
+  - name: RBCIF
+    description: Ring buffer completed interrupt flag.
+    bit_offset: 8
+    bit_size: 1
+  - name: RBEIF
+    description: Ring buffer error interrupt flag.
+    bit_offset: 9
+    bit_size: 1
+  - name: CLSIF
+    description: Command list suspended interrupt flag.
+    bit_offset: 12
+    bit_size: 1
+  - name: CLEIF
+    description: Command list error interrupt flag.
+    bit_offset: 13
+    bit_size: 1
+  - name: GPF0IF
+    description: General purpose flag 0 interrupt flag.
+    bit_offset: 16
+    bit_size: 1
+  - name: GPF1IF
+    description: General purpose flag 1 interrupt flag.
+    bit_offset: 17
+    bit_size: 1
+  - name: GPF2IF
+    description: General purpose flag 2 interrupt flag.
+    bit_offset: 18
+    bit_size: 1
+  - name: GPF3IF
+    description: General purpose flag 3 interrupt flag.
+    bit_offset: 19
+    bit_size: 1
+fieldset/LBCAR:
+  description: DMA2D linear buffer current address register.
+  fields:
+  - name: ADDRESS
+    description: Address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/LBCBAR:
+  description: DMA2D linear buffer current base address register.
+  fields:
+  - name: ADDRESS
+    description: Address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/LBCSR:
+  description: DMA2D linear buffer current size register.
+  fields:
+  - name: SIZE
+    description: Size.
+    bit_offset: 0
+    bit_size: 12
+fieldset/LWR:
+  description: DMA2D line watermark register.
+  fields:
+  - name: LW
+    description: Line watermark for interrupt generation.
+    bit_offset: 0
+    bit_size: 16
+fieldset/NLR:
+  description: DMA2D number of line register.
+  fields:
+  - name: NL
+    description: Number of lines.
+    bit_offset: 0
+    bit_size: 16
+  - name: PL
+    description: Pixel per lines.
+    bit_offset: 16
+    bit_size: 14
+fieldset/OCOLR:
+  description: DMA2D output color register.
+  fields:
+  - name: BLUE
+    description: Blue value of the output image in ARGB8888 or RGB888.
+    bit_offset: 0
+    bit_size: 8
+  - name: GREEN
+    description: Green value of the output image in ARGB8888 or RGB888.
+    bit_offset: 8
+    bit_size: 8
+  - name: RED
+    description: Red value of the output image in ARGB8888 or RGB888 mode.
+    bit_offset: 16
+    bit_size: 8
+  - name: ALPHA
+    description: Alpha channel value of the output color in ARGB8888 mode (otherwise reserved).
+    bit_offset: 24
+    bit_size: 8
+fieldset/OMAR:
+  description: DMA2D output memory address register.
+  fields:
+  - name: MA
+    description: Memory address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/OOR:
+  description: DMA2D output offset register.
+  fields:
+  - name: LO
+    description: Line offset.
+    bit_offset: 0
+    bit_size: 16
+fieldset/OPFCCR:
+  description: DMA2D output PFC control register.
+  fields:
+  - name: CM
+    description: Color mode.
+    bit_offset: 0
+    bit_size: 4
+  - name: SB
+    description: Swap bytes.
+    bit_offset: 8
+    bit_size: 1
+  - name: AI
+    description: Alpha Inverted.
+    bit_offset: 20
+    bit_size: 1
+  - name: RBS
+    description: Red/Blue swap.
+    bit_offset: 21
+    bit_size: 1
+  - name: APOS
+    description: Alpha position.
+    bit_offset: 22
+    bit_size: 1
+fieldset/RBBAR:
+  description: DMA2D ring buffer base address register.
+  fields:
+  - name: ADDRESS
+    description: Address.
+    bit_offset: 0
+    bit_size: 32
+fieldset/RBHPR:
+  description: DMA2D ring buffer head pointer register.
+  fields:
+  - name: HP
+    description: Head Pointer.
+    bit_offset: 0
+    bit_size: 14
+fieldset/RBWPR:
+  description: DMA2D ring buffer write pointer register.
+  fields:
+  - name: WP
+    description: Write Pointer.
+    bit_offset: 0
+    bit_size: 14
+fieldset/SBCR:
+  description: DMA2D stencil buffer configuration register.
+  fields:
+  - name: SRC
+    description: Source.
+    bit_offset: 0
+    bit_size: 2
+  - name: MODE
+    description: mode.
+    bit_offset: 4
+    bit_size: 2
+  - name: AI
+    description: Alpha Inverted.
+    bit_offset: 20
+    bit_size: 1
+fieldset/SBMAR:
+  description: DMA2D stencil buffer memory address register.
+  fields:
+  - name: MA
+    description: Memory address, address of the data used for the stencil buffer.
+    bit_offset: 0
+    bit_size: 32
+fieldset/SBMSR:
+  description: DMA2D stencil buffer memory skip register.
+  fields:
+  - name: HPRE
+    description: Horizontal pre pixels.
+    bit_offset: 0
+    bit_size: 4
+  - name: HTRAIL
+    description: Horizontal trailing pixels.
+    bit_offset: 8
+    bit_size: 4
+fieldset/SBOR:
+  description: DMA2D stencil buffer offset register.
+  fields:
+  - name: LO
+    description: Line offset.
+    bit_offset: 0
+    bit_size: 16
+fieldset/SCR:
+  description: DMA2D scaler configuration register.
+  fields:
+  - name: SRC
+    description: Source.
+    bit_offset: 0
+    bit_size: 2
+fieldset/SNLR:
+  description: DMA2D scaler number of line register.
+  fields:
+  - name: NL
+    description: Number of lines.
+    bit_offset: 0
+    bit_size: 16
+  - name: PL
+    description: Pixel per lines.
+    bit_offset: 16
+    bit_size: 14
+fieldset/SPR:
+  description: DMA2D scaler phase register.
+  fields:
+  - name: HPHASE
+    description: horizontal phase.
+    bit_offset: 0
+    bit_size: 12
+  - name: VPHASE
+    description: vertical phase.
+    bit_offset: 16
+    bit_size: 12
+fieldset/SSR:
+  description: DMA2D scaler step register.
+  fields:
+  - name: HSTEP
+    description: horizontal step.
+    bit_offset: 0
+    bit_size: 12
+  - name: VSTEP
+    description: vertical step.
+    bit_offset: 16
+    bit_size: 12
+fieldset/TBCR:
+  description: DMA2D tile buffer configuration register.
+  fields:
+  - name: SRC
+    description: Source.
+    bit_offset: 0
+    bit_size: 2
+  - name: XMEN
+    description: X mirroring enable.
+    bit_offset: 4
+    bit_size: 1
+  - name: YMEN
+    description: Y mirroring enable.
+    bit_offset: 5
+    bit_size: 1
+  - name: XYSEN
+    description: X/Y swap enable.
+    bit_offset: 6
+    bit_size: 1
